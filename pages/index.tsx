@@ -6,8 +6,7 @@ export default function Home() {
       <Head>
         <title>Jerens Lensun</title>
       </Head>
-
-      <main className="h-screen text-center">
+      <main className="h-9/10 text-center">
         <h1 className="p-40 font-bold text-3xl">
           This Page is Under Development
         </h1>
