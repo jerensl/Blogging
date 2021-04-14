@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react'
 import { SunIcon } from '@heroicons/react/solid'
 
 export const DarkMode = (): React.ReactElement => {
-  const [isMounted, setIsMounted] = useState(false)
+  const [isMounted, setIsMounted] = useState<boolean>(false)
   const { theme, setTheme } = useTheme()
 
   useEffect(() => {

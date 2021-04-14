@@ -7,10 +7,18 @@ export default function Home(): React.ReactElement {
         <title>Jerens Lensun</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main className="h-9/10 text-center">
-        <h1 className="p-40 font-bold text-3xl">
-          This Page is Under Development
-        </h1>
+      <main>
+        <header className="grid grid-cols-2 gap-4 pt-40 center h-9/10 ">
+          <div>
+            <p className="text-2xl">Hi folks, i'm</p>
+            <h1 className="font-bold text-4xl mt-1">Jerens Lensun</h1>
+            <p className="text-xl mt-4">
+              As Tech Enthusiast I do a lot of stuff so basically, i just share
+              my own thought and experience, not expertise
+            </p>
+          </div>
+          <div></div>
+        </header>
       </main>
 
       <footer></footer>
