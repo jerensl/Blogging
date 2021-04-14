@@ -2,26 +2,27 @@ import Head from 'next/head'
 
 export default function Home(): React.ReactElement {
   return (
-    <div className="px-20">
+    <div>
       <Head>
         <title>Jerens Lensun</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main>
-        <header className="grid grid-cols-2 gap-4 pt-40 center h-9/10 ">
-          <div>
-            <p className="text-2xl">Hi folks, i'm</p>
-            <h1 className="font-bold text-4xl mt-1">Jerens Lensun</h1>
-            <p className="text-xl mt-4">
-              As Tech Enthusiast I do a lot of stuff so basically, i just share
-              my own thought and experience, not expertise
-            </p>
-          </div>
-          <div></div>
-        </header>
+      <header className="pt-40 h-9/10 px-10 md:px-20">
+        <div className="max-w-xl">
+          <p className="text-2xl">Hi folks, i'm</p>
+          <h1 className="font-bold text-4xl mt-1">Jerens Lensun</h1>
+          <p className="text-xl mt-4">
+            As Tech Enthusiast I do a lot of stuff so basically, i just share my
+            own thought and experience, not expertise
+          </p>
+        </div>
+      </header>
+      <main className="h-9/10 flex flex-col items-center">
+        <h1 className="font-bold text-3xl mt-1 p-10">Blog</h1>
       </main>
-
-      <footer></footer>
+      <footer className="h-1/10 flex flex-col justify-center items-center">
+        <p>Copyright © 2021 Jerens Lensun.</p>
+      </footer>
     </div>
   )
 }
