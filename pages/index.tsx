@@ -1,6 +1,25 @@
 import Head from 'next/head'
+import { GetStaticProps } from 'next'
+import { getAllFilesFrontMatter } from '../domain/parseMarkdown'
+import Link from 'next/link'
 
-export default function Home(): React.ReactElement {
+type Post = {
+  title: string
+  date: string
+  draft: boolean
+  summary: string
+  slug: string
+}
+
+export const getStaticProps: GetStaticProps = async () => {
+  const posts = await getAllFilesFrontMatter()
+
+  return {
+    props: { posts },
+  }
+}
+
+export default function Home({ posts }: { posts: Post[] }): React.ReactElement {
   return (
     <div>
       <Head>
@@ -17,8 +36,24 @@ export default function Home(): React.ReactElement {
           </p>
         </div>
       </header>
-      <main className="h-9/10 flex flex-col items-center">
-        <h1 className="font-bold text-3xl mt-1 p-10">Blog</h1>
+      <main className="h-9/10 items-center md:px-20">
+        <h1 className="font-bold text-center text-3xl mt-1 p-10">Blog</h1>
+        <div className="grid grid-cols-auto gap-5 mt-5">
+          {posts?.length
+            ? posts.map(({ slug, date, title, summary }) => {
+                return (
+                  <article key={slug}>
+                    <h2 className="text-2xl font-bold leading-8 tracking-tight">
+                      <Link href={`/blog/${slug}`}>{title}</Link>
+                    </h2>
+                    <div className="prose text-gray-500 max-w-none dark:text-gray-400">
+                      {summary}
+                    </div>
+                  </article>
+                )
+              })
+            : 'No posts found.'}
+        </div>
       </main>
       <footer className="h-1/10 flex flex-col justify-center items-center">
         <p>Copyright © 2021 Jerens Lensun.</p>
