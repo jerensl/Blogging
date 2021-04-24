@@ -11,10 +11,4 @@ describe('check parse markdown to html work corectly', () => {
       'You are using the wrong directory'
     )
   })
-  test('should fail when pass wrong directory', () => {
-    expect(() => getFileFromDir('content')).toThrow(
-      'You are using the wrong directory'
-    )
-  })
-
 })
