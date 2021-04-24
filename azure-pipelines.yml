@@ -20,10 +20,19 @@ steps:
   - script: |
       yarn install
       yarn test:ci
-    displayName: 'yarn install and running test'
+      yarn test:coverage
+    displayName: 'yarn install, test and coverage test'
 
   - task: PublishTestResults@2
     inputs:
       testRunner: JUnit
       testResultsFiles: '**/test-report.xml'
       failTaskOnFailedTests: true
+    displayName: 'Test Result'
+
+  - task: PublishCodeCoverageResults@1
+    inputs:
+      codeCoverageTool: Cobertura
+      summaryFileLocation: '$(System.DefaultWorkingDirectory)/**/cobertura-coverage.xml'
+      reportDirectory: '$(System.DefaultWorkingDirectory)/**/coverage'
+    displayName: 'Publish Code Coverage'

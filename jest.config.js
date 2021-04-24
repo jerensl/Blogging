@@ -3,4 +3,5 @@ module.exports = {
   testPathIgnorePatterns: ['<rootDir>/.next/', '<rootDir>/node_modules/'],
   reporters: ['default', 'jest-junit'],
   testResultsProcessor: 'jest-junit',
+  coverageReporters: ['json', 'lcov', 'text', 'clover', 'cobertura'],
 }
