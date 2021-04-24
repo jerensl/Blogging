@@ -11,18 +11,38 @@ module.exports = {
       gridTemplateColumns: {
         auto: 'repeat(auto-fit, minmax(450px, 1fr))',
       },
+      textColor: {
+        markdown: {
+          base: 'var(--color-text-base)',
+        },
+      },
+      backgroundColor: {
+        markdown: {
+          fill: 'var(--color-fill)',
+        },
+      },
       typography: (theme) => ({
-        dark: {
+        DEFAULT: {
           css: {
-            color: 'white',
+            h1: {
+              color: 'var(--color-text-base)',
+            },
+            code: {
+              color: theme('colors.red.600'),
+              backgroundColor: theme('colors.gray.100'),
+              padding: '2px 4px',
+              borderRadius: '0.25rem',
+            },
           },
+        },
+        dark: {
+          css: {},
         },
       }),
     },
   },
   variants: {
     typography: ['dark'],
-    extend: {},
   },
-  plugins: [require('@tailwindcss/typography')],
+  plugins: [require('@tailwindcss/typography'), require('autoprefixer')],
 }

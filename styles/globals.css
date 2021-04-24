@@ -1,3 +1,13 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  :root {
+    --color-text-markdown: #ffffff;
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}

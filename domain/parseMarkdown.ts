@@ -5,52 +5,60 @@ import renderToString from 'next-mdx-remote/render-to-string'
 
 const rootDirectory = process.cwd()
 
-export function formatSlug(slug: string) {
-  return slug.replace(/\.md/, '')
+function removeFileFormat(fileName: Array<string>) {
+  return fileName.map((file) => file.replace(/\.md/, ''))
 }
 
-export async function getFiles(file: string) {
-  return fs.readdirSync(path.join(rootDirectory, file))
+export function getFileFromDir(directory: string) {
+  const dir = path.join(rootDirectory, directory)
+  if (!fs.existsSync(dir)) {
+    throw new Error('You are using the wrong directory')
+  }
+  const source = fs.readdirSync(dir)
+  return removeFileFormat(source)
 }
 
-export function dateSortDesc(a: number, b: number) {
+export function readFileFromDir(directory: string, fileName: string) {
+  const source = path.join(rootDirectory, directory, fileName)
+
+  return fs.readFileSync(source, 'utf8')
+}
+
+function dateSortDesc(a: number, b: number): number {
   if (a > b) return -1
   if (a < b) return 1
   return 0
 }
 
-export async function getAllFilesFrontMatter() {
-  const files = fs.readdirSync(path.join(rootDirectory, 'contents'))
+export async function getAllPublishedContent() {
+  const files = getFileFromDir('contents')
 
   const allFrontMatter: Array<any> = []
 
   files.map((fileName) => {
-    const source = fs.readFileSync(
-      path.join(rootDirectory, 'contents', fileName),
-      'utf8'
-    )
+    const source = readFileFromDir('contents', `${fileName}.md`)
     const { data } = matter(source)
     if (!data.draft) {
-      allFrontMatter.push({ ...data, slug: formatSlug(fileName) })
+      allFrontMatter.push({ ...data, slug: fileName })
     }
   })
 
   return allFrontMatter.sort((a, b) => dateSortDesc(a.date, b.date))
 }
 
-export const getMarkdownBySlug = async (slug: string) => {
-  const mdPath = path.join(rootDirectory, 'contents', `${slug}.md`)
+export const getMarkdownBySlug = async (fileName: string) => {
+  const file = `${fileName}.md`
 
-  const source = fs.readFileSync(mdPath, 'utf8')
+  const source = readFileFromDir('contents', file)
 
   const { data, content } = matter(source)
-  const mdxSource = await renderToString(content)
+  const mdSource = await renderToString(content)
 
   return {
-    mdxSource,
+    mdSource,
     frontMatter: {
-      slug: slug || null,
-      fileName: `${slug}.md`,
+      slug: file || null,
+      fileName: file,
       ...data,
     },
   }

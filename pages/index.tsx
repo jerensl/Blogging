@@ -1,6 +1,6 @@
 import Head from 'next/head'
 import { GetStaticProps } from 'next'
-import { getAllFilesFrontMatter } from '../domain/parseMarkdown'
+import { getAllPublishedContent } from '../domain/parseMarkdown'
 import Link from 'next/link'
 
 type Post = {
@@ -12,7 +12,7 @@ type Post = {
 }
 
 export const getStaticProps: GetStaticProps = async () => {
-  const posts = await getAllFilesFrontMatter()
+  const posts = await getAllPublishedContent()
 
   return {
     props: { posts },
@@ -26,13 +26,13 @@ export default function Home({ posts }: { posts: Post[] }): React.ReactElement {
         <title>Jerens Lensun</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <header className="pt-40 h-9/10 px-10 md:px-20">
+      <header className="pt-40 h-9/10 px-10 md:px-20 ">
         <div className="max-w-xl">
           <p className="text-2xl">Hi folks, i'm</p>
           <h1 className="font-bold text-4xl mt-1">Jerens Lensun</h1>
           <p className="text-xl mt-4">
-            As Tech Enthusiast I do a lot of stuff so basically, i just share my
-            own thought and experience, not expertise
+            As Tech Enthusiast I learn a lot of stuff so basically, i just share
+            my own thought and learning experience, not expertise
           </p>
         </div>
       </header>
@@ -46,9 +46,7 @@ export default function Home({ posts }: { posts: Post[] }): React.ReactElement {
                     <h2 className="text-2xl font-bold leading-8 tracking-tight">
                       <Link href={`/blog/${slug}`}>{title}</Link>
                     </h2>
-                    <div className="prose text-gray-500 max-w-none dark:text-gray-400">
-                      {summary}
-                    </div>
+                    <div className="prose text-markdown-base">{summary}</div>
                   </article>
                 )
               })

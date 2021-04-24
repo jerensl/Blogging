@@ -1,23 +1,20 @@
 import { useTheme } from 'next-themes'
-import { useEffect, useState } from 'react'
 import { SunIcon } from '@heroicons/react/solid'
+import { useState, useEffect } from 'react'
 
 export const DarkMode = (): React.ReactElement => {
-  const [isMounted, setIsMounted] = useState<boolean>(false)
+  const [mounted, setMounted] = useState(false)
   const { theme, setTheme } = useTheme()
 
-  useEffect(() => {
-    setIsMounted(true)
-  }, [])
-  const switchTheme = () => {
-    if (isMounted) {
-      setTheme(theme === 'light' ? 'dark' : 'light')
-    }
-  }
+  // When mounted on client, now we can show the UI
+  useEffect(() => setMounted(true), [])
 
   return (
-    <button className="py-3 px-3" onClick={switchTheme}>
-      {theme ? (
+    <button
+      className="py-3 px-3"
+      onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+    >
+      {mounted && theme ? (
         <SunIcon className="h-7 w-7" />
       ) : (
         <SunIcon className="h-7 w-7" />

@@ -1,18 +1,18 @@
 ---
 title: Javascript 101
-date: '2016-03-08'
+date: '2020-04-24'
 draft: false
 summary: How to learn javascript faster than you thought
 ---
 
-This is basic Javascript  
-This is `Hello Wolrd` sample code check this out
+Contoh membuat `Hello world` pada javascript
 
-# Code Blocks
-
-Some Javascript code
+Code snippet dibawah
 
 ```javascript
-const hello = 'Hello World'
-console.log(hello)
+const hallo = 'Hello world'
+function print() {
+  console.log(hallo)
+  return hallo
+}
 ```

@@ -1,6 +1,6 @@
 ---
 title: Javascript Fundamental
-date: '2016-03-08'
+date: '2020-04-24'
 draft: false
 summary: This his should you learn on Javascript
 ---

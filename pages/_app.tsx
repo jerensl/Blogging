@@ -8,15 +8,11 @@ import { MDXProviderProps } from '@mdx-js/react'
 const components = {
   code: CodeBlock,
   wrapper: MarkdownLayout,
-  h1: (props: MDXProviderProps) => (
-    <h1 style={{ color: '#333333' }} {...props} />
-  ),
-  p: (props: MDXProviderProps) => <p style={{ color: '#333333' }} {...props} />,
 }
 
 function MyApp({ Component, pageProps }: AppProps): React.ReactElement {
   return (
-    <ThemeProvider>
+    <ThemeProvider attribute="class">
       <MDXProvider components={components}>
         <Navbar />
         <Component {...pageProps} />
