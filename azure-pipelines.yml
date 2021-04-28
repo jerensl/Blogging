@@ -4,7 +4,7 @@ trigger:
   - main
 
 pool:
-  vmImage: ubuntu-18.04
+  vmImage: ubuntu-latest
 
 strategy:
   matrix:
@@ -36,13 +36,3 @@ steps:
       summaryFileLocation: '$(System.DefaultWorkingDirectory)/**/cobertura-coverage.xml'
       reportDirectory: '$(System.DefaultWorkingDirectory)/**/coverage'
     displayName: 'Publish Code Coverage'
-
-  - checkout: self
-    submodules: true
-  - task: AzureStaticWebApp@0
-    inputs:
-      app_location: '/'
-      api_location: 'api'
-      output_location: 'out'
-    env:
-      azure_static_web_apps_api_token: $(deployment_token)
