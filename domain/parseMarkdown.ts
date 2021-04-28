@@ -30,13 +30,13 @@ function dateSortDesc(a: number, b: number): number {
   return 0
 }
 
-export async function getAllPublishedContent() {
-  const files = getFileFromDir('contents')
+export async function getAllPublishedContent(directory: string) {
+  const files = getFileFromDir(directory)
 
   const allFrontMatter: Array<any> = []
 
   files.map((fileName) => {
-    const source = readFileFromDir('contents', `${fileName}.md`)
+    const source = readFileFromDir(directory, `${fileName}.md`)
     const { data } = matter(source)
     if (!data.draft) {
       allFrontMatter.push({ ...data, slug: fileName })
@@ -46,10 +46,13 @@ export async function getAllPublishedContent() {
   return allFrontMatter.sort((a, b) => dateSortDesc(a.date, b.date))
 }
 
-export const getMarkdownBySlug = async (fileName: string) => {
+export const getMarkdownBySlug = async (
+  directory: string,
+  fileName: string
+) => {
   const file = `${fileName}.md`
 
-  const source = readFileFromDir('contents', file)
+  const source = readFileFromDir(directory, file)
 
   const { data, content } = matter(source)
   const mdSource = await renderToString(content)
@@ -57,7 +60,7 @@ export const getMarkdownBySlug = async (fileName: string) => {
   return {
     mdSource,
     frontMatter: {
-      slug: file || null,
+      slug: fileName,
       fileName: file,
       ...data,
     },

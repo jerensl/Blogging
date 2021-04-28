@@ -43,6 +43,13 @@ module.exports = {
   },
   variants: {
     typography: ['dark'],
+    extend: {
+      transitionProperty: ['hover', 'focus'],
+    },
   },
-  plugins: [require('@tailwindcss/typography'), require('autoprefixer')],
+  plugins: [
+    require('@tailwindcss/typography'),
+    require('@tailwindcss/line-clamp'),
+    require('autoprefixer'),
+  ],
 }

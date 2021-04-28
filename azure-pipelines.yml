@@ -11,6 +11,9 @@ strategy:
     node_12_x:
       node_version: 12.x
 
+variables:
+  - group: 'Web App'
+
 steps:
   - task: NodeTool@0
     inputs:
@@ -36,3 +39,13 @@ steps:
       summaryFileLocation: '$(System.DefaultWorkingDirectory)/**/cobertura-coverage.xml'
       reportDirectory: '$(System.DefaultWorkingDirectory)/**/coverage'
     displayName: 'Publish Code Coverage'
+
+  - checkout: self
+    submodules: true
+  - task: AzureStaticWebApp@0
+    inputs:
+      app_location: '/'
+      api_location: 'api'
+      output_location: ''
+    env:
+      azure_static_web_apps_api_token: $(deployment_token_static_web_app)

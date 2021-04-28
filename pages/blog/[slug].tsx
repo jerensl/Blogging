@@ -17,7 +17,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 }
 
 export const getStaticProps: GetStaticProps = async ({ params }: any) => {
-  const posts = await getMarkdownBySlug(params.slug)
+  const posts = await getMarkdownBySlug('contents', params.slug)
 
   return {
     props: { posts },

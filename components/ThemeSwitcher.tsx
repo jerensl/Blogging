@@ -1,8 +1,9 @@
 import { useTheme } from 'next-themes'
 import { SunIcon } from '@heroicons/react/solid'
 import { useState, useEffect } from 'react'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
-export const DarkMode = (): React.ReactElement => {
+export const ThemeSwitcher = (): React.ReactElement => {
   const [mounted, setMounted] = useState(false)
   const { theme, setTheme } = useTheme()
 
@@ -14,11 +15,7 @@ export const DarkMode = (): React.ReactElement => {
       className="py-3 px-3"
       onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
     >
-      {mounted && theme ? (
-        <SunIcon className="h-7 w-7" />
-      ) : (
-        <SunIcon className="h-7 w-7" />
-      )}
+      <FontAwesomeIcon className="h-6 w-6" icon={['fas', 'adjust']} />
     </button>
   )
 }

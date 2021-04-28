@@ -5,6 +5,25 @@ import { MDXProvider } from '@mdx-js/react'
 import type { AppProps } from 'next/app'
 import { MDXProviderProps } from '@mdx-js/react'
 
+import { library } from '@fortawesome/fontawesome-svg-core'
+import {
+  faGithubSquare,
+  faTwitterSquare,
+  faLinkedin,
+} from '@fortawesome/free-brands-svg-icons'
+import {
+  faAdjust,
+  faLongArrowAltRight,
+} from '@fortawesome/free-solid-svg-icons'
+
+library.add(
+  faGithubSquare,
+  faTwitterSquare,
+  faLinkedin,
+  faAdjust,
+  faLongArrowAltRight
+)
+
 const components = {
   code: CodeBlock,
   wrapper: MarkdownLayout,

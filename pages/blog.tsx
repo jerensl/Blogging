@@ -2,7 +2,6 @@ import Head from 'next/head'
 import { GetStaticProps } from 'next'
 import { getAllPublishedContent } from '../domain/parseMarkdown'
 import Link from 'next/link'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 type Post = {
   title: string
@@ -12,6 +11,8 @@ type Post = {
   slug: string
 }
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+
 export const getStaticProps: GetStaticProps = async () => {
   const posts = await getAllPublishedContent('contents')
 
@@ -20,30 +21,20 @@ export const getStaticProps: GetStaticProps = async () => {
   }
 }
 
-export default function Home({ posts }: { posts: Post[] }): React.ReactElement {
+export default function Blog({ posts }: { posts: Post[] }): React.ReactElement {
   return (
     <div>
       <Head>
         <title>Jerens Lensun</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <header className="pt-40 h-9/10">
-        <div className="max-w-xl">
-          <p className="text-2xl">Hi folks, i'm</p>
-          <h1 className="font-bold text-4xl mt-1">Jerens Lensun</h1>
-          <p className="text-xl mt-4">
-            As Tech Enthusiast I learn a lot of stuff so basically, i just share
-            my own thought and learning experience, not expertise
-          </p>
-        </div>
-      </header>
-      <main className="h-9/10  items-center">
-        <h1 className="font-semibold text-3xl py-5">Blog</h1>
-        <div className="grid gap-5 mt-5">
+      <main className="h-9/10 max-w-2xl items-center">
+        <h1 className="font-bold text-3xl mt-1 py-10 m-auto">Blog</h1>
+        <div className="grid grid-row gap-5 mt-5">
           {posts?.length
             ? posts.map(({ slug, date, title, summary }) => {
                 return (
-                  <article className="max-w-2xl" key={slug}>
+                  <article key={slug}>
                     <h1 className="text-2xl font-bold leading-8 tracking-tight">
                       <Link href={`/blog/${slug}`}>{title}</Link>
                     </h1>
