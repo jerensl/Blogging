@@ -11,28 +11,46 @@ strategy:
     node_12_x:
       node_version: 12.x
 
-steps:
-  - task: NodeTool@0
-    inputs:
-      versionSpec: $(node_version)
-    displayName: 'Install Node JS'
+stages:
+  - stage: Build
+    jobs:
+      - job: Build_Pipeline
+        steps:
+          - task: NodeTool@0
+            inputs:
+              versionSpec: $(node_version)
+            displayName: 'Install Node JS'
 
-  - script: |
-      yarn install
-      yarn test:ci
-      yarn test:coverage
-    displayName: 'yarn install, test and coverage test'
+          - script: |
+              yarn install
+              yarn test:ci
+              yarn test:coverage
+            displayName: 'yarn install, test and coverage test'
 
-  - task: PublishTestResults@2
-    inputs:
-      testRunner: JUnit
-      testResultsFiles: '**/test-report.xml'
-      failTaskOnFailedTests: true
-    displayName: 'Test Result'
+          - task: PublishTestResults@2
+            inputs:
+              testRunner: JUnit
+              testResultsFiles: '**/test-report.xml'
+              failTaskOnFailedTests: true
+            displayName: 'Test Result'
 
-  - task: PublishCodeCoverageResults@1
-    inputs:
-      codeCoverageTool: Cobertura
-      summaryFileLocation: '$(System.DefaultWorkingDirectory)/**/cobertura-coverage.xml'
-      reportDirectory: '$(System.DefaultWorkingDirectory)/**/coverage'
-    displayName: 'Publish Code Coverage'
+          - task: PublishCodeCoverageResults@1
+            inputs:
+              codeCoverageTool: Cobertura
+              summaryFileLocation: '$(System.DefaultWorkingDirectory)/**/cobertura-coverage.xml'
+              reportDirectory: '$(System.DefaultWorkingDirectory)/**/coverage'
+            displayName: 'Publish Code Coverage'
+
+  - stage: Release
+    jobs:
+      - job: Release_Pipeline
+        steps:
+          - checkout: self
+            submodules: true
+          - task: AzureStaticWebApp@0
+            inputs:
+              app_location: '/'
+              api_location: 'api'
+              output_location: 'out'
+            env:
+              azure_static_web_apps_api_token: $(deployment_token)
