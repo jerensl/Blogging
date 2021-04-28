@@ -11,9 +11,6 @@ strategy:
     node_12_x:
       node_version: 12.x
 
-variables:
-  - group: 'Web App'
-
 steps:
   - task: NodeTool@0
     inputs:
@@ -48,4 +45,4 @@ steps:
       api_location: 'api'
       output_location: ''
     env:
-      azure_static_web_apps_api_token: $(deployment_token_static_web_app)
+      azure_static_web_apps_api_token: $(deployment_token)
