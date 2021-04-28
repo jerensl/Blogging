@@ -6,15 +6,16 @@ trigger:
 pool:
   vmImage: ubuntu-latest
 
-strategy:
-  matrix:
-    node_12_x:
-      node_version: 12.x
-
 stages:
   - stage: Build
     jobs:
       - job: Build_Pipeline
+
+        strategy:
+          matrix:
+            node_12_x:
+              node_version: 12.x
+              
         steps:
           - task: NodeTool@0
             inputs:
