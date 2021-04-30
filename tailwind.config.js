@@ -8,6 +8,9 @@ module.exports = {
         '1/10': '10vh',
         '9/10': '90vh',
       },
+      minHeight: {
+        'full-screen': '80vh',
+      },
       gridTemplateColumns: {
         auto: 'repeat(auto-fit, minmax(450px, 1fr))',
       },
@@ -25,6 +28,9 @@ module.exports = {
         DEFAULT: {
           css: {
             h1: {
+              color: 'var(--color-text-base)',
+            },
+            h2: {
               color: 'var(--color-text-base)',
             },
             code: {

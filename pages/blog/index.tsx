@@ -1,9 +1,9 @@
 import Head from 'next/head'
 import { GetStaticProps } from 'next'
-import { getAllPublishedContent } from '../domain/parseMarkdown'
+import { getMetadaOfAllPublishArticle } from '../../domain/Blog'
 import Link from 'next/link'
 
-type Post = {
+interface Post {
   title: string
   date: string
   draft: boolean
@@ -11,10 +11,8 @@ type Post = {
   slug: string
 }
 
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-
 export const getStaticProps: GetStaticProps = async () => {
-  const posts = await getAllPublishedContent('contents')
+  const posts = await getMetadaOfAllPublishArticle('contents')
 
   return {
     props: { posts },
@@ -28,7 +26,7 @@ export default function Blog({ posts }: { posts: Post[] }): React.ReactElement {
         <title>Jerens Lensun</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main className="h-9/10 max-w-2xl items-center">
+      <main className="min-h-full-screen max-w-2xl items-center">
         <h1 className="font-bold text-3xl mt-1 py-10 m-auto">Blog</h1>
         <div className="grid grid-row gap-5 mt-5">
           {posts?.length

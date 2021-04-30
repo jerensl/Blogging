@@ -14,7 +14,7 @@ export const Navbar = (): React.ReactElement => {
         <Link href="/blog">
           <a className="p-4 font-semibold">Blog</a>
         </Link>
-        <Link href="/">
+        <Link href="/about">
           <a className="p-4 font-semibold">About</a>
         </Link>
       </div>

@@ -1,8 +1,8 @@
 import {
-  getFileFromDir,
-  getAllPublishedContent,
-  getMarkdownBySlug,
-} from '../domain/parseMarkdown'
+  getListOfArticle,
+  getMetadaOfAllPublishArticle,
+  getArticleWithMetadata,
+} from '../domain/Blog'
 
 const metadata = [
   {
@@ -14,11 +14,11 @@ const metadata = [
   },
 ]
 
-const rawMarkdown = {
-  mdSource: {
+const exampleArticle = {
+  article: {
     renderedOutput: '<p>Example code for testing</p>',
   },
-  frontMatter: {
+  metadata: {
     slug: 'test-markdown',
     fileName: 'test-markdown.md',
     title: 'Testing 101',
@@ -28,24 +28,24 @@ const rawMarkdown = {
   },
 }
 
-describe('check parse markdown to html work corectly', () => {
+describe('check blog working correctly', () => {
   test('should parse one post from content directory', () => {
-    const post = getFileFromDir('tests/contents')
+    const post = getListOfArticle('tests/contents')
     expect(post).toEqual(['test-markdown'])
   })
   test('should fail when pass wrong directory', () => {
-    expect(() => getFileFromDir('tests/content')).toThrow(
+    expect(() => getListOfArticle('tests/content')).toThrow(
       'You are using the wrong directory'
     )
   })
-  test('should parse metedata', async () => {
-    const data = await getAllPublishedContent('tests/contents')
+  test('should parse metadata', async () => {
+    const data = await getMetadaOfAllPublishArticle('tests/contents')
 
     expect(data).toMatchObject(metadata)
   })
-  test('should parse content and metadata', async () => {
-    const data = await getMarkdownBySlug('tests/contents', 'test-markdown')
+  test('should parse article and metadata', async () => {
+    const data = await getArticleWithMetadata('tests/contents', 'test-markdown')
 
-    expect(data).toMatchObject(rawMarkdown)
+    expect(data).toMatchObject(exampleArticle)
   })
 })

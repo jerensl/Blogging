@@ -5,11 +5,28 @@ import renderToString from 'next-mdx-remote/render-to-string'
 
 const rootDirectory = process.cwd()
 
+interface Metadata {
+  title: string
+  date: string
+  draft: boolean
+  summary: string
+  slug: string
+}
+
+interface Post {
+  title: string
+  fileName: string
+  slug: string
+  date: string
+  draft: boolean
+  summary: string
+}
+
 function removeFileFormat(fileName: Array<string>) {
   return fileName.map((file) => file.replace(/\.md/, ''))
 }
 
-export function getFileFromDir(directory: string) {
+export function getListOfArticle(directory: string) {
   const dir = path.join(rootDirectory, directory)
   if (!fs.existsSync(dir)) {
     throw new Error('You are using the wrong directory')
@@ -18,8 +35,12 @@ export function getFileFromDir(directory: string) {
   return removeFileFormat(source)
 }
 
-export function readFileFromDir(directory: string, fileName: string) {
+export function getArticleByName(directory: string, fileName: string) {
   const source = path.join(rootDirectory, directory, fileName)
+
+  if (!fs.existsSync(source)) {
+    throw new Error('File markdown not found')
+  }
 
   return fs.readFileSync(source, 'utf8')
 }
@@ -30,13 +51,13 @@ function dateSortDesc(a: number, b: number): number {
   return 0
 }
 
-export async function getAllPublishedContent(directory: string) {
-  const files = getFileFromDir(directory)
+export async function getMetadaOfAllPublishArticle(directory: string) {
+  const files = getListOfArticle(directory)
 
   const allFrontMatter: Array<any> = []
 
   files.map((fileName) => {
-    const source = readFileFromDir(directory, `${fileName}.md`)
+    const source = getArticleByName(directory, `${fileName}.md`)
     const { data } = matter(source)
     if (!data.draft) {
       allFrontMatter.push({ ...data, slug: fileName })
@@ -46,20 +67,20 @@ export async function getAllPublishedContent(directory: string) {
   return allFrontMatter.sort((a, b) => dateSortDesc(a.date, b.date))
 }
 
-export const getMarkdownBySlug = async (
+export const getArticleWithMetadata = async (
   directory: string,
   fileName: string
 ) => {
   const file = `${fileName}.md`
 
-  const source = readFileFromDir(directory, file)
+  const source = getArticleByName(directory, file)
 
   const { data, content } = matter(source)
-  const mdSource = await renderToString(content)
+  const article = await renderToString(content)
 
   return {
-    mdSource,
-    frontMatter: {
+    article,
+    metadata: {
       slug: fileName,
       fileName: file,
       ...data,

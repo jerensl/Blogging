@@ -1,10 +1,9 @@
 import Head from 'next/head'
 import { GetStaticProps } from 'next'
-import { getAllPublishedContent } from '../domain/parseMarkdown'
+import { getMetadaOfAllPublishArticle } from '../domain/Blog'
 import Link from 'next/link'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
-type Post = {
+interface Post {
   title: string
   date: string
   draft: boolean
@@ -13,7 +12,7 @@ type Post = {
 }
 
 export const getStaticProps: GetStaticProps = async () => {
-  const posts = await getAllPublishedContent('contents')
+  const posts = await getMetadaOfAllPublishArticle('contents')
 
   return {
     props: { posts },

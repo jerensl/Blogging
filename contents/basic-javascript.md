@@ -2,41 +2,20 @@
 title: Javascript 101
 date: '2020-04-24'
 draft: false
-summary: Javascript merupakan salah satu bahasa pemrograman terpopuler hal itu membuat pemula cukup mudah untuk menemukan dokumentasi dan tutorial sehingga dapat dipelajari lebih gampang dibanding bahasa pemrograman lain
+summary: Javascript merupakan salah satu bahasa pemrograman terpopuler hal itu membuat pemula cukup mudah untuk menemukan dokumentasi dan tutorial diluar sana
 ---
 
-Contoh membuat `Hello world` pada javascript
+## Variable
 
-Code snippet dibawah
+Javascript memiliki 3 jenis variable var, let dan const namun var sudah tidak lagi digunakan pada aplikasi modern javascript. Ketika dipanggil variable biasa merujuk pada sebuah value pada variable tersebut
 
-```javascript
-const hallo = 'Hello world'
-function print() {
-  console.log(hallo)
-  return hallo
-}
-```
-
-Contoh membuat `Hello world` pada javascript
-
-Code snippet dibawah
+- let digunakan untuk variable yg bisa dimutasi/berubah
+- const digunakan untuk variable tidak dapat dimutasi/tetap
 
 ```javascript
-const hallo = 'Hello world'
-function print() {
-  console.log(hallo)
-  return hallo
-}
-```
+var old = 'Hello world 1'
+let mutable = 'Hello world 2'
+const immutable = 'Hello world 3'
 
-Contoh membuat `Hello world` pada javascript
-
-Code snippet dibawah
-
-```javascript
-const hallo = 'Hello world'
-function print() {
-  console.log(hallo)
-  return hallo
-}
+console.log(old) // memanggil varible old hasilnya merupakan value dari variable tersebut `Hello world 1`
 ```
