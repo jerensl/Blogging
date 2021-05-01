@@ -1,18 +1,10 @@
 import Head from 'next/head'
 import { GetStaticProps } from 'next'
-import { getMetadaOfAllPublishArticle } from '../domain/Blog'
+import { getAllPublishArticle, sortByLatestDate, Post } from '../domain/Blog'
 import Link from 'next/link'
 
-interface Post {
-  title: string
-  date: string
-  draft: boolean
-  summary: string
-  slug: string
-}
-
 export const getStaticProps: GetStaticProps = async () => {
-  const posts = await getMetadaOfAllPublishArticle('contents')
+  const posts = await getAllPublishArticle('contents', sortByLatestDate)
 
   return {
     props: { posts },
@@ -20,6 +12,7 @@ export const getStaticProps: GetStaticProps = async () => {
 }
 
 export default function Home({ posts }: { posts: Post[] }): React.ReactElement {
+  console.log(posts)
   return (
     <div>
       <Head>

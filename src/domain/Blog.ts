@@ -5,7 +5,7 @@ import renderToString from 'next-mdx-remote/render-to-string'
 
 const rootDirectory = process.cwd()
 
-interface Metadata {
+export interface Metadata {
   title: string
   date: string
   draft: boolean
@@ -13,7 +13,7 @@ interface Metadata {
   slug: string
 }
 
-interface Post {
+export interface Post {
   title: string
   fileName: string
   slug: string
@@ -22,17 +22,21 @@ interface Post {
   summary: string
 }
 
-function removeFileFormat(fileName: Array<string>) {
-  return fileName.map((file) => file.replace(/\.md/, ''))
-}
+type Sort = (listOfContent: Array<Metadata>) => Array<Metadata>
 
 export function getListOfArticle(directory: string) {
   const dir = path.join(rootDirectory, directory)
   if (!fs.existsSync(dir)) {
     throw new Error('You are using the wrong directory')
   }
-  const source = fs.readdirSync(dir)
-  return removeFileFormat(source)
+
+  const listofArticle = fs.readdirSync(dir)
+
+  return listofArticle.map((file) => file.replace(/\.md/, ''))
+}
+
+export function sortByLatestDate(listOfContent: Array<Metadata>) {
+  return listOfContent.sort((a, b) => Date.parse(b.date) - Date.parse(a.date))
 }
 
 export function getArticleByName(directory: string, fileName: string) {
@@ -45,26 +49,23 @@ export function getArticleByName(directory: string, fileName: string) {
   return fs.readFileSync(source, 'utf8')
 }
 
-function dateSortDesc(a: number, b: number): number {
-  if (a > b) return -1
-  if (a < b) return 1
-  return 0
-}
-
-export async function getMetadaOfAllPublishArticle(directory: string) {
+export async function getAllPublishArticle(
+  directory: string,
+  sort: Sort
+): Promise<Array<Metadata>> {
   const files = getListOfArticle(directory)
 
-  const allFrontMatter: Array<any> = []
+  const allMetadata: Array<any> = []
 
   files.map((fileName) => {
     const source = getArticleByName(directory, `${fileName}.md`)
     const { data } = matter(source)
     if (!data.draft) {
-      allFrontMatter.push({ ...data, slug: fileName })
+      allMetadata.push({ ...data, slug: fileName })
     }
   })
 
-  return allFrontMatter.sort((a, b) => dateSortDesc(a.date, b.date))
+  return allMetadata
 }
 
 export const getArticleWithMetadata = async (

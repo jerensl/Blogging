@@ -1,8 +1,9 @@
 import {
   getListOfArticle,
-  getMetadaOfAllPublishArticle,
+  getAllPublishArticle,
   getArticleWithMetadata,
-} from '../domain/Blog'
+  sortByLatestDate,
+} from '../src/domain/Blog'
 
 const metadata = [
   {
@@ -19,9 +20,9 @@ const exampleArticle = {
     renderedOutput: '<p>Example code for testing</p>',
   },
   metadata: {
-    slug: 'test-markdown',
-    fileName: 'test-markdown.md',
     title: 'Testing 101',
+    fileName: 'test-markdown.md',
+    slug: 'test-markdown',
     date: '2020-04-24',
     draft: false,
     summary: 'Testing code',
@@ -39,7 +40,7 @@ describe('check blog working correctly', () => {
     )
   })
   test('should parse metadata', async () => {
-    const data = await getMetadaOfAllPublishArticle('tests/contents')
+    const data = await getAllPublishArticle('tests/contents', sortByLatestDate)
 
     expect(data).toMatchObject(metadata)
   })

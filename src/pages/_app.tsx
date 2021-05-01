@@ -3,7 +3,6 @@ import { Navbar, CodeBlock, MarkdownLayout } from '../components'
 import { ThemeProvider } from 'next-themes'
 import { MDXProvider } from '@mdx-js/react'
 import type { AppProps } from 'next/app'
-import { MDXProviderProps } from '@mdx-js/react'
 
 import { library } from '@fortawesome/fontawesome-svg-core'
 import {

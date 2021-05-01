@@ -2,6 +2,7 @@
 title: Javascript 101
 date: '2020-04-24'
 draft: false
+cover: '/Javascript-Basic.jpg'
 summary: Javascript merupakan salah satu bahasa pemrograman terpopuler hal itu membuat pemula cukup mudah untuk menemukan dokumentasi dan tutorial diluar sana
 ---
 
