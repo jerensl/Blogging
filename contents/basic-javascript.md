@@ -1,9 +1,9 @@
 ---
-title: Javascript 101
+title: Maximize developer productivity with CI & CD
 date: '2020-04-24'
 draft: false
 cover: '/Javascript-Basic.jpg'
-summary: Javascript merupakan salah satu bahasa pemrograman terpopuler hal itu membuat pemula cukup mudah untuk menemukan dokumentasi dan tutorial diluar sana
+summary: CI & CD can help us to develop quickly this is why it's so important
 ---
 
 ## Variable

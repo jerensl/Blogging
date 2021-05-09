@@ -12,7 +12,6 @@ export const getStaticProps: GetStaticProps = async () => {
 }
 
 export default function Home({ posts }: { posts: Post[] }): React.ReactElement {
-  console.log(posts)
   return (
     <div>
       <Head>
@@ -24,8 +23,7 @@ export default function Home({ posts }: { posts: Post[] }): React.ReactElement {
           <p className="text-2xl">Hi folks, i'm</p>
           <h1 className="font-bold text-4xl mt-1">Jerens Lensun</h1>
           <p className="text-xl mt-4">
-            As Tech Enthusiast I learn a lot of stuff so basically, i just share
-            my own thought and learning experience, not expertise
+            Tes 123
           </p>
         </div>
       </header>
