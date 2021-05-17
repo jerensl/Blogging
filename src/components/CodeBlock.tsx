@@ -1,5 +1,5 @@
 import Highlight, { defaultProps } from 'prism-react-renderer'
-import theme from 'prism-react-renderer/themes/dracula'
+import dracula from 'prism-react-renderer/themes/dracula'
 
 type Code = {
   children: string
@@ -15,7 +15,7 @@ export const CodeBlock = ({
   return (
     <Highlight
       {...defaultProps}
-      theme={theme}
+      theme={dracula}
       code={children}
       language={language}
     >

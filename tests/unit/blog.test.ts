@@ -3,7 +3,7 @@ import {
   getAllPublishArticle,
   getArticleWithMetadata,
   sortByLatestDate,
-} from '../src/domain/Blog'
+} from '../../src/domain/Blog'
 
 const metadata = [
   {
