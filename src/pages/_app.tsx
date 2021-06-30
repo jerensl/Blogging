@@ -13,6 +13,7 @@ import {
 import {
   faAdjust,
   faLongArrowAltRight,
+  faBars,
 } from '@fortawesome/free-solid-svg-icons'
 
 library.add(
@@ -20,7 +21,8 @@ library.add(
   faTwitterSquare,
   faLinkedin,
   faAdjust,
-  faLongArrowAltRight
+  faLongArrowAltRight,
+  faBars
 )
 
 const components = {

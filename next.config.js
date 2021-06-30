@@ -1,4 +1,8 @@
 const rehypePrism = require('@mapbox/rehype-prism')
+const withPWA = require('next-pwa')
+const runtimeCaching = require('next-pwa/cache')
+const withPlugins = require('next-compose-plugins')
+
 const visit = 'unist-util-visit'
 
 const tokenClassNames = {
@@ -35,12 +39,32 @@ const withMDX = require('@next/mdx')({
   },
 })
 
-module.exports = withMDX({
-  pageExtensions: ['js', 'jsx', 'ts', 'tsx', 'md', 'mdx'],
-  trailingSlash: true,
-  exportPathMap: function () {
-    return {
-      '/': { page: '/' },
-    }
-  },
-})
+module.exports = withPlugins(
+  [
+    [
+      withMDX,
+      {
+        pageExtensions: ['js', 'jsx', 'ts', 'tsx', 'md', 'mdx'],
+        trailingSlash: true,
+        exportPathMap: function () {
+          return {
+            '/': { page: '/' },
+          }
+        },
+      },
+    ],
+    [
+      withPWA,
+      {
+        pwa: {
+          dest: 'public',
+          disable: process.env.NODE_ENV === 'development',
+          runtimeCaching,
+        },
+      },
+    ],
+  ],
+  {
+    /* global config here ... */
+  }
+)

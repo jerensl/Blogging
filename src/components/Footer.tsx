@@ -2,7 +2,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 export const Footer = (): React.ReactElement => {
   return (
-    <footer className=" flex flex-row justify-between items-center">
+    <footer className="grid justify-center place-items-center text-center md:flex flex-row md:justify-between items-center">
       <div className="flex space-x-5 py-2">
         <a href="https://github.com/jerensl">
           <FontAwesomeIcon

@@ -10,7 +10,7 @@ export const ThemeSwitcher = (): React.ReactElement => {
 
   return (
     <button
-      className="py-3 px-3"
+      className="hidden md:block py-3 px-3"
       onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
     >
       <FontAwesomeIcon className="h-6 w-6" icon={['fas', 'adjust']} />

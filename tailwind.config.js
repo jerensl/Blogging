@@ -12,7 +12,8 @@ module.exports = {
         '9/10': '90vh',
       },
       minHeight: {
-        'full-screen': '80vh',
+        '1/10': '10vh',
+        'full-screen': '90vh',
       },
       gridTemplateColumns: {
         auto: 'repeat(auto-fit, minmax(450px, 1fr))',
