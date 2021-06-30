@@ -31,6 +31,12 @@ const components = {
   wrapper: MarkdownLayout,
 }
 
+declare global {
+  interface Window {
+    workbox: any
+  }
+}
+
 function MyApp({ Component, pageProps }: AppProps): React.ReactElement {
   useEffect(() => {
     if (
