@@ -43,6 +43,12 @@ module.exports = {
               padding: '2px 4px',
               borderRadius: '0.25rem',
             },
+            p: {
+              fontWeight: 'normal',
+            },
+            ul: {
+              fontWeight: 'normal',
+            },
           },
         },
         dark: {

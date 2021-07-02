@@ -10,6 +10,14 @@ export const Navbar = (): React.ReactElement => {
   return (
     <nav className="fixed z-10 dark:bg-gray-800 bg-gray-100 left-0 right-0 px-14">
       <div className="flex justify-between place-items-center min-h-1/10">
+        {/* Mobile Nav */}
+        <button
+          className="block md:hidden px-2 py-2"
+          onClick={() => setSidenav((s) => !s)}
+        >
+          <FontAwesomeIcon className="h-6 w-6" icon={['fas', 'bars']} />
+        </button>
+
         {/* Logo */}
         <Link href="/">
           <a className="font-bold text-lg">Jerens</a>
@@ -35,14 +43,6 @@ export const Navbar = (): React.ReactElement => {
         </div>
         {/* Secondary Nav */}
         <ThemeSwitcher />
-
-        {/* Mobile Nav */}
-        <button
-          className="block md:hidden px-2 py-2"
-          onClick={() => setSidenav((s) => !s)}
-        >
-          <FontAwesomeIcon className="h-6 w-6" icon={['fas', 'bars']} />
-        </button>
       </div>
 
       {/* Sidebar */}
