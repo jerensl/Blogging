@@ -8,7 +8,7 @@ export const Navbar = (): React.ReactElement => {
   const [sidenav, setSidenav] = useState(false)
 
   return (
-    <nav className="fixed z-10 dark:bg-gray-800 bg-gray-100 left-0 right-0 px-14">
+    <nav className="fixed z-10 dark:bg-gray-800 bg-gray-100 left-0 right-0 px-10">
       <div className="flex justify-between place-items-center min-h-1/10">
         {/* Mobile Nav */}
         <button

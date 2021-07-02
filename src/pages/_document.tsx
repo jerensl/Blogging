@@ -39,7 +39,7 @@ class MyDocument extends Document {
         />
         <link rel="manifest" href="/manifest.json" />
         <link rel="shortcut icon" href="/favicon.ico" />
-        <body className="text-black bg-white dark:bg-gray-900 dark:text-white w-9/12 m-auto">
+        <body className="container mx-auto px-10 text-black bg-white dark:bg-gray-900 dark:text-white">
           <Main />
           <Footer />
           <NextScript />

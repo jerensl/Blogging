@@ -9,7 +9,7 @@ summary: DevOps merupakan serangkaian praktik untuk mempersingkat siklus hidup p
 Ada 3 core praktik yang akan kita bahas
 
 - Continous Integration  
-  Developer mengembangkan aplikasi dengan menerapkan integrasi berkelanjutan melalui `version control` untuk setiap perubahan pada code sekecil dan secepat mungkin sehingga test otomatis dapat langsung divalidasi. Dengan cara seperti ini kita dapat menghindari masalah integrasi yang terjadi pada hari mendekati aplikasi di release
+  Developer mengembangkan aplikasi dengan menerapkan integrasi yang berkelanjutan melalui `version control` atau `git` untuk setiap perubahan pada code dengan skala kecil dan secepat mungkin sehingga automatic test dapat langsung menvalidasi. Dengan cara seperti ini kita dapat menghindari masalah integrasi yang terjadi pada hari mendekati aplikasi di release
 - Continous Delivery  
   Continous delivery merupakan proses lanjutan dari continous integration dimana akan diterapkannya semua perubahan pada aplikasi ke lingkungan testing atau production setelah proses build selesai. Proses ini dilakukan secara otomatis namun masih terdapat campur tangan manusia seperti approval pada aplikasi sebelum code di release ke production
 - Continuous Deployment  
@@ -25,8 +25,8 @@ Github action merupakan salah satu tool yang bisa kita gunakan untuk menerapkan 
 Github Action menggunakan yaml dalam format penulisan codingannya
 
 - name: Nama dari workflow github action yang kita buat.
-- on: Github event yang akan mentrigger jalannya workflow github action.
-- jobs: Workflow yang akan dijalankan
+- on: Github event yang akan mentrigger jalannya jobs atau workflow github action.
+- jobs: Workflow yang akan dijalankan.
 
 ```yaml
 name: GitHub Actions Demo

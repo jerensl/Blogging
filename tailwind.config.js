@@ -6,6 +6,9 @@ module.exports = {
   ],
   darkMode: 'class', // or 'media' or 'class'
   theme: {
+    container: {
+      center: true,
+    },
     extend: {
       height: {
         '1/10': '10vh',
