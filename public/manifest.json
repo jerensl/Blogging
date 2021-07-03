@@ -1,15 +1,19 @@
 {
   "name": "Jerens Personal App",
   "short_name": "Jerens App",
+  "start_url": "/",
+  "description": "A readable Blog app.",
   "icons": [
     {
       "src": "/android-chrome-192x192.png",
       "sizes": "192x192",
+      "purpose": "any maskable",
       "type": "image/png"
     },
     {
       "src": "/android-chrome-512x512.png",
       "sizes": "512x512",
+      "purpose": "any maskable",
       "type": "image/png"
     }
   ],
