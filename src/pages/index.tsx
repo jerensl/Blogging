@@ -18,7 +18,7 @@ export default function Home({ posts }: { posts: Post[] }): React.ReactElement {
         <title>Jerens Lensun</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <header className="pt-40 min-h-screen">
+      <header className="pt-40 min-h-screen px-2">
         <div className="max-w-2xl">
           <p className="text-2xl">Hi folks, i'm</p>
           <h1 className="font-bold text-4xl mt-1">Jerens Lensun</h1>
@@ -30,7 +30,7 @@ export default function Home({ posts }: { posts: Post[] }): React.ReactElement {
           </p>
         </div>
       </header>
-      <main className="h-9/10  items-center">
+      <main className="h-9/10 items-center px-2">
         <h1 className="font-semibold text-2xl pt-24 py-1">Latest Blog</h1>
         <div className="grid gap-5 mt-5">
           {posts?.length

@@ -1,7 +1,7 @@
 import Head from 'next/head'
 import { GetStaticProps, GetStaticPaths } from 'next'
 import { getArticleWithMetadata, getListOfArticle } from '../../domain/Blog'
-import hydrate from 'next-mdx-remote/hydrate'
+import { MDXRemote } from 'next-mdx-remote'
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const posts = getListOfArticle('contents')
@@ -27,7 +27,6 @@ export const getStaticProps: GetStaticProps = async ({ params }: any) => {
 export default function Blog({ posts }: any): React.ReactElement {
   const { article, metadata } = posts
   const { slug, fileName, date, title } = metadata
-  const content = hydrate(article)
 
   return (
     <div className=" min-h-full-screen max-w-3xl m-auto divide-y divide-gray-200">
@@ -40,7 +39,9 @@ export default function Blog({ posts }: any): React.ReactElement {
         <p className="text-center pt-1 text-lg">{date}</p>
       </header>
       <main className="font-medium m-auto">
-        <article>{content}</article>
+        <article>
+          <MDXRemote {...article} />
+        </article>
       </main>
     </div>
   )

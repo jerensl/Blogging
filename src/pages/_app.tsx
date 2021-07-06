@@ -19,6 +19,7 @@ import {
   faBars,
   faMoon,
   faSun,
+  faTimes,
 } from '@fortawesome/free-solid-svg-icons'
 
 library.add(
@@ -29,7 +30,8 @@ library.add(
   faLongArrowAltRight,
   faBars,
   faMoon,
-  faSun
+  faSun,
+  faTimes
 )
 
 const components = {
@@ -85,15 +87,13 @@ function MyApp({ Component, pageProps }: AppProps): React.ReactElement {
 
   return (
     <ThemeProvider attribute="class">
-      <MDXProvider components={components}>
-        <MenuProvider>
-          <div className="relative">
-            <Navbar />
-            <Sidebar />
-            <Component {...pageProps} />
-          </div>
-        </MenuProvider>
-      </MDXProvider>
+      <MenuProvider>
+        <MDXProvider components={components}>
+          <Navbar />
+          <Sidebar />
+          <Component {...pageProps} />
+        </MDXProvider>
+      </MenuProvider>
     </ThemeProvider>
   )
 }

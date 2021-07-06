@@ -1,7 +1,7 @@
 import fs from 'fs'
 import path from 'path'
 import matter from 'gray-matter'
-import renderToString from 'next-mdx-remote/render-to-string'
+import { serialize } from 'next-mdx-remote/serialize'
 
 const rootDirectory = process.cwd()
 
@@ -77,7 +77,8 @@ export const getArticleWithMetadata = async (
   const source = getArticleByName(directory, file)
 
   const { data, content } = matter(source)
-  const article = await renderToString(content)
+
+  const article = await serialize(content)
 
   return {
     article,

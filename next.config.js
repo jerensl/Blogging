@@ -56,7 +56,7 @@ module.exports = withPlugins(
     [
       withPWA,
       {
-        future: { webpack5: true },
+        webpack5: true,
         pwa: {
           dest: 'public',
           runtimeCaching,

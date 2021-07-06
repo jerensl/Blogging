@@ -34,19 +34,16 @@ describe('check blog working correctly', () => {
     const post = getListOfArticle('tests/contents')
     expect(post).toEqual(['test-markdown'])
   })
+
   test('should fail when pass wrong directory', () => {
     expect(() => getListOfArticle('tests/content')).toThrow(
       'You are using the wrong directory'
     )
   })
+
   test('should parse metadata', async () => {
     const data = await getAllPublishArticle('tests/contents', sortByLatestDate)
 
     expect(data).toMatchObject(metadata)
-  })
-  test('should parse article and metadata', async () => {
-    const data = await getArticleWithMetadata('tests/contents', 'test-markdown')
-
-    expect(data).toMatchObject(exampleArticle)
   })
 })

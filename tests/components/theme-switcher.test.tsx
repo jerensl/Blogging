@@ -1,11 +1,14 @@
-import { render, fireEvent, waitFor, screen } from '@testing-library/react'
-import userEvent from '@testing-library/user-event'
+/**
+ * @jest-environment jsdom
+ */
+
+import { render, screen } from '@testing-library/react'
 import { ThemeSwitcher } from '../../src/components'
 import { library } from '@fortawesome/fontawesome-svg-core'
 
-import { faAdjust } from '@fortawesome/free-solid-svg-icons'
+import { faMoon } from '@fortawesome/free-solid-svg-icons'
 
-library.add(faAdjust)
+library.add(faMoon)
 
 test('Theme switcher Button', async () => {
   render(<ThemeSwitcher />)
