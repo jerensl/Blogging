@@ -1,11 +1,11 @@
 import Link from 'next/link'
 import { ThemeSwitcher } from './ThemeSwitcher'
-import { Sidebar } from './Sidebar'
-import { useState } from 'react'
+import { useMenu } from '../components/SideMenu'
+
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 export const Navbar = (): React.ReactElement => {
-  const [sidenav, setSidenav] = useState(false)
+  const { dispatch } = useMenu()
 
   return (
     <nav className="fixed z-10 dark:bg-gray-800 bg-gray-100 left-0 right-0 px-10">
@@ -13,7 +13,7 @@ export const Navbar = (): React.ReactElement => {
         {/* Mobile Nav */}
         <button
           className="block md:hidden px-2 py-2"
-          onClick={() => setSidenav((s) => !s)}
+          onClick={() => dispatch({ type: 'on' })}
         >
           <FontAwesomeIcon className="h-6 w-6" icon={['fas', 'bars']} />
         </button>
@@ -44,9 +44,6 @@ export const Navbar = (): React.ReactElement => {
         {/* Secondary Nav */}
         <ThemeSwitcher />
       </div>
-
-      {/* Sidebar */}
-      <Sidebar sidenav={sidenav} />
     </nav>
   )
 }

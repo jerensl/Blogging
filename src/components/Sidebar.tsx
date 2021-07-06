@@ -1,13 +1,19 @@
 import Link from 'next/link'
+import { useEffect } from 'react'
+import { useMenu } from '../components/SideMenu'
 
-interface Menu {
-  sidenav: boolean
-}
+export const Sidebar = () => {
+  const { state, dispatch } = useMenu()
 
-export const Sidebar = ({ sidenav }: Menu) => {
+  useEffect(() => dispatch({ type: 'off' }), [])
+
   return (
     <>
-      <div className={sidenav ? 'grid items-center text-center' : 'hidden'}>
+      <div
+        className={
+          state.toggle === true ? 'grid items-center text-center' : 'hidden'
+        }
+      >
         <Link href="/">
           <a className="p-4 font-semibold hover:bg-gray-200 dark:hover:bg-gray-700">
             Home

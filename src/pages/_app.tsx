@@ -1,5 +1,6 @@
 import '../styles/globals.css'
-import { Navbar, CodeBlock, MarkdownLayout } from '../components'
+import { Navbar, CodeBlock, MarkdownLayout, Sidebar } from '../components'
+import { MenuProvider } from '../components/SideMenu'
 import { ThemeProvider } from 'next-themes'
 import { MDXProvider } from '@mdx-js/react'
 import type { AppProps } from 'next/app'
@@ -16,6 +17,8 @@ import {
   faAdjust,
   faLongArrowAltRight,
   faBars,
+  faMoon,
+  faSun,
 } from '@fortawesome/free-solid-svg-icons'
 
 library.add(
@@ -24,7 +27,9 @@ library.add(
   faLinkedin,
   faAdjust,
   faLongArrowAltRight,
-  faBars
+  faBars,
+  faMoon,
+  faSun
 )
 
 const components = {
@@ -81,8 +86,13 @@ function MyApp({ Component, pageProps }: AppProps): React.ReactElement {
   return (
     <ThemeProvider attribute="class">
       <MDXProvider components={components}>
-        <Navbar />
-        <Component {...pageProps} />
+        <MenuProvider>
+          <div className="relative">
+            <Navbar />
+            <Sidebar />
+            <Component {...pageProps} />
+          </div>
+        </MenuProvider>
       </MDXProvider>
     </ThemeProvider>
   )
