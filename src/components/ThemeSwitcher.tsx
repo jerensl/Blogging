@@ -1,6 +1,7 @@
 import { useTheme } from 'next-themes'
 import { useState, useEffect } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { Switch } from '@headlessui/react'
 
 export const ThemeSwitcher = (): React.ReactElement => {
   const [mounted, setMounted] = useState(false)
@@ -12,13 +13,13 @@ export const ThemeSwitcher = (): React.ReactElement => {
 
   return (
     <button
-      className="p-4 hover:bg-gray-200 dark:hover:bg-gray-700"
+      className="p-7 md:p-4 hover:bg-gray-200 dark:hover:bg-gray-700"
       onClick={handleClick}
     >
       {theme === 'light' ? (
-        <FontAwesomeIcon className="text-xl" icon={['fas', 'sun']} />
+        <FontAwesomeIcon className="text-2xl" icon={['fas', 'sun']} />
       ) : (
-        <FontAwesomeIcon className="text-xl" icon={['fas', 'moon']} />
+        <FontAwesomeIcon className="text-2xl" icon={['fas', 'moon']} />
       )}
     </button>
   )

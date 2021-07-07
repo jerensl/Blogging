@@ -12,7 +12,7 @@ export const Navbar = (): React.ReactElement => {
       <div className="flex justify-between place-items-center min-w-max">
         {/* Mobile Nav */}
         <button
-          className="block md:hidden p-4"
+          className="block p-7 md:hidden md:p-4"
           onClick={() => dispatch({ type: 'on' })}
         >
           <FontAwesomeIcon className="text-xl" icon={['fas', 'bars']} />
@@ -20,7 +20,7 @@ export const Navbar = (): React.ReactElement => {
 
         {/* Logo */}
         <Link href="/">
-          <a className="font-bold text-lg">Jerens</a>
+          <a className="font-bold text-2xl">Jerens</a>
         </Link>
 
         {/* Primary Nav */}

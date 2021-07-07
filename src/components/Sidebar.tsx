@@ -11,10 +11,6 @@ export const Sidebar = () => {
     dispatch({ type: 'off' })
   }
 
-  function openModal() {
-    dispatch({ type: 'on' })
-  }
-
   return (
     <Transition.Root show={state.toggle} as={Fragment}>
       <Dialog
@@ -56,9 +52,9 @@ export const Sidebar = () => {
                   leaveFrom="opacity-100"
                   leaveTo="opacity-0"
                 >
-                  <button className="py-4" onClick={closeModal}>
+                  <button className="py-5" onClick={closeModal}>
                     <FontAwesomeIcon
-                      className="h-6 w-6"
+                      className="text-2xl"
                       icon={['fas', 'times']}
                     />
                   </button>
@@ -66,24 +62,24 @@ export const Sidebar = () => {
                 <div className="h-full flex flex-col   shadow-xl overflow-y-scroll">
                   <Link href="/">
                     <a
-                      onClick={() => dispatch({ type: 'off' })}
-                      className="py-5 font-semibold hover:bg-gray-200 dark:hover:bg-gray-700"
+                      onClick={closeModal}
+                      className="py-6 font-semibold hover:bg-gray-200 dark:hover:bg-gray-700"
                     >
                       Home
                     </a>
                   </Link>
                   <Link href="/blog">
                     <a
-                      onClick={() => dispatch({ type: 'off' })}
-                      className="py-4 font-semibold hover:bg-gray-200 dark:hover:bg-gray-700"
+                      onClick={closeModal}
+                      className="py-6 font-semibold hover:bg-gray-200 dark:hover:bg-gray-700"
                     >
                       Blog
                     </a>
                   </Link>
                   <Link href="/about">
                     <a
-                      onClick={() => dispatch({ type: 'off' })}
-                      className="py-4 font-semibold hover:bg-gray-200 dark:hover:bg-gray-700"
+                      onClick={closeModal}
+                      className="py-6 font-semibold hover:bg-gray-200 dark:hover:bg-gray-700"
                     >
                       About
                     </a>
