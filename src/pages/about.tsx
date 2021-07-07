@@ -7,7 +7,7 @@ export default function About(): React.ReactElement {
         <title>Jerens Lensun</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <div className="min-h-full-screen px-2">
+      <div className="min-h-full-screen px-4">
         <h1 className="pt-28 text-2xl font-bold">Hi, I'm Jerens</h1>
         <p className="max-w-2xl">
           Hi folks, I'm Jerens. I like watching anime & football my favorite

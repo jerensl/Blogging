@@ -11,11 +11,14 @@ export const ThemeSwitcher = (): React.ReactElement => {
   const handleClick = () => setTheme(theme === 'dark' ? 'light' : 'dark')
 
   return (
-    <button className="py-3 px-3" onClick={handleClick}>
+    <button
+      className="p-4 hover:bg-gray-200 dark:hover:bg-gray-700"
+      onClick={handleClick}
+    >
       {theme === 'light' ? (
-        <FontAwesomeIcon className="h-6 w-6" icon={['fas', 'sun']} />
+        <FontAwesomeIcon className="text-xl" icon={['fas', 'sun']} />
       ) : (
-        <FontAwesomeIcon className="h-6 w-6" icon={['fas', 'moon']} />
+        <FontAwesomeIcon className="text-xl" icon={['fas', 'moon']} />
       )}
     </button>
   )
