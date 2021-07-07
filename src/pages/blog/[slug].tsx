@@ -26,12 +26,13 @@ export const getStaticProps: GetStaticProps = async ({ params }: any) => {
 
 export default function Blog({ posts }: any): React.ReactElement {
   const { article, metadata } = posts
-  const { slug, fileName, date, title } = metadata
+  const { date, title, summary } = metadata
 
   return (
-    <div className=" min-h-full-screen max-w-3xl m-auto divide-y divide-gray-200">
+    <div className="min-h-full-screen max-w-3xl m-auto divide-y divide-gray-200">
       <Head>
         <title>{title}</title>
+        <meta name="description" content={summary} />
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <header className="pt-24 py-5">

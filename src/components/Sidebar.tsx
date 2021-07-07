@@ -2,7 +2,7 @@ import Link from 'next/link'
 import { useMenu } from '../components/SideMenu'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { Dialog, Transition } from '@headlessui/react'
-import { Fragment, useState } from 'react'
+import { Fragment } from 'react'
 
 export const Sidebar = () => {
   const { state, dispatch } = useMenu()
