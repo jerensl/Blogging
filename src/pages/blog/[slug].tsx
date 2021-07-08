@@ -36,7 +36,7 @@ export default function Blog({ posts }: any): React.ReactElement {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <header className="pt-24 py-5">
-        <h1 className="text-4xl text-center font-bold">{title}</h1>
+        <h1 className="text-3xl text-center font-bold">{title}</h1>
         <p className="text-center pt-1 text-lg">{date}</p>
       </header>
       <main className="font-medium m-auto">

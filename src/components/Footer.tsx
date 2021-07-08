@@ -6,19 +6,19 @@ export const Footer = (): React.ReactElement => {
       <div className="flex space-x-5 py-2">
         <a className="p-2" href="https://github.com/jerensl">
           <FontAwesomeIcon
-            className="text-4xl transform hover:scale-110"
+            className="text-3xl transform hover:scale-125"
             icon={['fab', 'github-square']}
           />
         </a>
         <a className="p-2" href="https://twitter.com/jerensl22">
           <FontAwesomeIcon
-            className="text-4xl transform hover:scale-110"
+            className="text-3xl transform hover:scale-125"
             icon={['fab', 'twitter-square']}
           />
         </a>
         <a className="p-2" href="https://www.linkedin.com/in/jerensl/">
           <FontAwesomeIcon
-            className="text-4xl transform	hover:scale-110"
+            className="text-3xl transform	hover:scale-125"
             icon={['fab', 'linkedin']}
           />
         </a>

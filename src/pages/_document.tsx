@@ -22,7 +22,6 @@ class MyDocument extends Document {
     return (
       <Html>
         <Head>
-          <title>Jerens Lensun</title>
           <meta name="application-name" content={APP_NAME} />
           <meta name="apple-mobile-web-app-capable" content="yes" />
           <meta
@@ -30,19 +29,10 @@ class MyDocument extends Document {
             content="default"
           />
           <meta name="apple-mobile-web-app-title" content={APP_NAME} />
-          <meta
-            name="google-site-verification"
-            content="IcqLpRy2zwKkTN1TlYABjrsUKoOOUp5sE5EQoMhrg_U"
-          />
           <meta name="description" content={APP_DESCRIPTION} />
           <meta name="format-detection" content="telephone=no" />
           <meta name="mobile-web-app-capable" content="yes" />
           <meta name="theme-color" content="#FFFFFF" />
-          <meta
-            name="viewport"
-            content="minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no, viewport-fit=cover"
-          />
-
           <link
             rel="apple-touch-icon"
             sizes="180x180"

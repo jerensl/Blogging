@@ -1,5 +1,5 @@
 import '../styles/globals.css'
-import { Navbar, CodeBlock, MarkdownLayout, Sidebar } from '../components'
+import { Navbar, CodeBlock, MarkdownLayout } from '../components'
 import { MenuProvider } from '../components/SideMenu'
 import { ThemeProvider } from 'next-themes'
 import { MDXProvider } from '@mdx-js/react'
@@ -90,7 +90,6 @@ function MyApp({ Component, pageProps }: AppProps): React.ReactElement {
       <MenuProvider>
         <MDXProvider components={components}>
           <Navbar />
-          <Sidebar />
           <Component {...pageProps} />
         </MDXProvider>
       </MenuProvider>

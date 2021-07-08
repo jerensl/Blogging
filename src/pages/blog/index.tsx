@@ -3,7 +3,7 @@ import { GetStaticProps } from 'next'
 import { getAllPublishArticle, sortByLatestDate } from '../../domain/Blog'
 import Link from 'next/link'
 
-interface Post {
+export interface Post {
   title: string
   date: string
   draft: boolean
@@ -31,7 +31,7 @@ export default function Blog({ posts }: { posts: Post[] }): React.ReactElement {
         {posts?.length
           ? posts.map(({ slug, date, cover, title, summary }) => {
               return (
-                <article key={slug}>
+                <article key={slug} className="flex flex-col gap-1">
                   <h1 className="text-2xl font-bold leading-8 tracking-tight">
                     <Link href={`/blog/${slug}`}>{title}</Link>
                   </h1>
@@ -40,7 +40,7 @@ export default function Blog({ posts }: { posts: Post[] }): React.ReactElement {
                   <div className="">{summary}</div>
 
                   <Link href={`/blog/${slug}`}>
-                    <span className="text-gray-500 cursor-pointer">
+                    <span className="flex-grow-0 w-24 text-gray-500 hover:text-gray-700 cursor-pointer">
                       Read More →
                     </span>
                   </Link>

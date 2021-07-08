@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import { ThemeSwitcher } from './ThemeSwitcher'
 import { useMenu } from '../components/SideMenu'
+import { Sidebar } from '../components/Sidebar'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
@@ -12,7 +13,7 @@ export const Navbar = (): React.ReactElement => {
       <div className="flex justify-between place-items-center min-w-max">
         {/* Mobile Nav */}
         <button
-          className="block p-7 md:hidden md:p-4"
+          className="block p-5 md:hidden md:p-4"
           onClick={() => dispatch({ type: 'on' })}
         >
           <FontAwesomeIcon className="text-xl" icon={['fas', 'bars']} />
@@ -44,6 +45,7 @@ export const Navbar = (): React.ReactElement => {
         {/* Secondary Nav */}
         <ThemeSwitcher />
       </div>
+      <Sidebar />
     </nav>
   )
 }
