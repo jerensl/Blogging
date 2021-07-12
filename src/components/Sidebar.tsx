@@ -1,85 +1,78 @@
 import Link from 'next/link'
-import { useMenu } from '../components/SideMenu'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { Dialog, Transition } from '@headlessui/react'
 import { Fragment } from 'react'
 
-export const Sidebar = () => {
-  const { state, dispatch } = useMenu()
-
-  function closeModal() {
-    dispatch({ type: 'off' })
-  }
-
+export const Sidebar = ({ showSidebar, handleSidebarClosed }: any) => {
   return (
-    <Transition.Root show={state.toggle} as={Fragment}>
+    <Transition.Root show={showSidebar} as={Fragment}>
       <Dialog
-        as="div"
+        as="aside"
         static
         className="fixed inset-0 z-10 overflow-hidden"
-        open={state.toggle}
-        onClose={closeModal}
+        open={showSidebar}
+        onClose={handleSidebarClosed}
       >
         <div className="absolute inset-0 overflow-hidden">
           <Transition.Child
             as={Fragment}
-            enter="ease-in-out duration-500"
+            enter="ease-in-out duration-300"
             enterFrom="opacity-0"
             enterTo="opacity-100"
-            leave="ease-in-out duration-500"
+            leave="ease-in-out duration-300"
             leaveFrom="opacity-100"
             leaveTo="opacity-0"
           >
-            <Dialog.Overlay className="absolute inset-0 bg-gray-500 bg-opacity-75 transition-opacity" />
+            <Dialog.Overlay className="absolute inset-0 bg-black bg-opacity-40 transition-opacity" />
           </Transition.Child>
           <div className="fixed inset-y-0 left-0 max-w-full flex">
             <Transition.Child
               as={Fragment}
-              enter="transform transition ease-in-out duration-500 sm:duration-700"
+              enter="transform transition ease-in-out duration-300"
               enterFrom="-translate-x-full"
               enterTo="-translate-x-0"
-              leave="transform transition ease-in-out duration-500 sm:duration-700"
+              leave="transform transition ease-in-out duration-300"
               leaveFrom="-translate-x-0"
               leaveTo="-translate-x-full"
             >
-              <div className="relative w-56 flex flex-col bg-gray-100 dark:bg-gray-900 text-center">
+              <div className="relative w-56 flex flex-col bg-gray-100 dark:dark-theme text-center">
                 <Transition.Child
                   as={Fragment}
-                  enter="ease-in-out duration-500"
+                  enter="ease-in-out duration-300"
                   enterFrom="opacity-0"
                   enterTo="opacity-100"
-                  leave="ease-in-out duration-500"
+                  leave="ease-in-out duration-300"
                   leaveFrom="opacity-100"
                   leaveTo="opacity-0"
                 >
-                  <button className="py-5" onClick={closeModal}>
+                  <button className="py-5" onClick={handleSidebarClosed}>
                     <FontAwesomeIcon
                       className="text-2xl"
                       icon={['fas', 'times']}
                     />
                   </button>
                 </Transition.Child>
-                <div className="h-full flex flex-col   shadow-xl overflow-y-scroll">
+                <div className="h-full flex flex-col shadow-xl">
                   <Link href="/">
                     <a
-                      onClick={closeModal}
-                      className="py-6 font-semibold hover:bg-gray-200 dark:hover:bg-gray-700"
+                      onClick={handleSidebarClosed}
+                      className="py-6 font-semibold hover:bg-gray-200 dark:hover:bg-white dark:hover:bg-opacity-5"
                     >
                       Home
                     </a>
                   </Link>
                   <Link href="/blog">
                     <a
-                      onClick={closeModal}
-                      className="py-6 font-semibold hover:bg-gray-200 dark:hover:bg-gray-700"
+                      onClick={handleSidebarClosed}
+                      className="py-6 font-semibold hover:bg-gray-200 dark:hover:bg-white dark:hover:bg-opacity-5"
                     >
                       Blog
                     </a>
                   </Link>
                   <Link href="/about">
                     <a
-                      onClick={closeModal}
-                      className="py-6 font-semibold hover:bg-gray-200 dark:hover:bg-gray-700"
+                      onClick={handleSidebarClosed}
+                      className="py-6 font-semibold hover:bg-gray-200 dark:hover:bg-white dark:hover:bg-opacity-5"
                     >
                       About
                     </a>

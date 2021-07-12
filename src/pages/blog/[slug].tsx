@@ -29,7 +29,7 @@ export default function Blog({ posts }: any): React.ReactElement {
   const { date, title, summary } = metadata
 
   return (
-    <div className="min-h-full-screen max-w-3xl m-auto divide-y divide-gray-200">
+    <div className="min-h-full-screen md:px-10 m-auto divide-y divide-gray-200">
       <Head>
         <title>{title}</title>
         <meta name="description" content={summary} />

@@ -4,12 +4,6 @@
 
 import { render } from '@testing-library/react'
 import Blog, { Post } from '../../src/pages/blog/index'
-import { library } from '@fortawesome/fontawesome-svg-core'
-
-import { faMoon, faSun } from '@fortawesome/free-solid-svg-icons'
-
-library.add(faMoon)
-library.add(faSun)
 
 interface Posts {
   posts: Post[]

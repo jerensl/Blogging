@@ -5,9 +5,13 @@
 @layer base {
   :root {
     --color-text-markdown: #ffffff;
+    --text-base: #fff;
   }
 
-  .theme-red {
+  .dark-theme {
+    --text-base: #fff;
+    --bg-base: #181818;
+    background-color: var(--bg-base);
   }
 }
 

@@ -12,21 +12,13 @@ export const ThemeSwitcher = (): React.ReactElement => {
 
   return (
     <button
-      className="p-5 md:p-4 hover:bg-gray-200 dark:hover:bg-gray-700"
+      className="h-10 w-10 rounded-full mr-5 hover:bg-gray-200 dark:hover:bg-gray-700"
       onClick={handleClick}
     >
       {theme === 'light' ? (
-        <FontAwesomeIcon
-          data-testid="light-button"
-          className="text-2xl"
-          icon={['fas', 'sun']}
-        />
+        <FontAwesomeIcon className="text-2xl" icon={['fas', 'sun']} />
       ) : (
-        <FontAwesomeIcon
-          data-testid="dark-button"
-          className="text-xl"
-          icon={['fas', 'moon']}
-        />
+        <FontAwesomeIcon className="text-xl" icon={['fas', 'moon']} />
       )}
     </button>
   )

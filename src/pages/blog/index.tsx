@@ -27,28 +27,30 @@ export default function Blog({ posts }: { posts: Post[] }): React.ReactElement {
         <title>Jerens Lensun</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main className="min-h-full-screen max-w-2xl items-center pt-32 px-4">
+      <section className="min-h-full-screen max-w-2xl items-center pt-32 px-4">
         {posts?.length
           ? posts.map(({ slug, date, cover, title, summary }) => {
               return (
-                <article key={slug} className="flex flex-col gap-1">
+                <article key={slug} className="flex flex-col fle gap-1">
                   <h1 className="text-2xl font-bold leading-8 tracking-tight">
                     <Link href={`/blog/${slug}`}>{title}</Link>
                   </h1>
                   <p className="text-gray-500">{date}</p>
 
-                  <div className="">{summary}</div>
+                  <p>{summary}</p>
 
-                  <Link href={`/blog/${slug}`}>
-                    <span className="flex-grow-0 w-24 text-gray-500 hover:text-gray-700 cursor-pointer">
-                      Read More →
-                    </span>
-                  </Link>
+                  <p>
+                    <Link href={`/blog/${slug}`}>
+                      <span className="text-gray-500 hover:text-gray-300 cursor-pointer">
+                        Read More →
+                      </span>
+                    </Link>
+                  </p>
                 </article>
               )
             })
           : 'No posts found.'}
-      </main>
+      </section>
     </div>
   )
 }

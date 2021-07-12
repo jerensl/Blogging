@@ -1,12 +1,10 @@
 import '../styles/globals.css'
-import { Navbar, CodeBlock, MarkdownLayout } from '../components'
-import { MenuProvider } from '../components/SideMenu'
+import { CodeBlock, MarkdownLayout, Navigation } from '../components'
 import { ThemeProvider } from 'next-themes'
 import { MDXProvider } from '@mdx-js/react'
 import type { AppProps } from 'next/app'
 import { useState, useEffect } from 'react'
 import { useRouter } from 'next/router'
-
 import { library } from '@fortawesome/fontawesome-svg-core'
 import {
   faGithubSquare,
@@ -87,12 +85,11 @@ function MyApp({ Component, pageProps }: AppProps): React.ReactElement {
 
   return (
     <ThemeProvider attribute="class">
-      <MenuProvider>
-        <MDXProvider components={components}>
-          <Navbar />
+      <MDXProvider components={components}>
+        <Navigation>
           <Component {...pageProps} />
-        </MDXProvider>
-      </MenuProvider>
+        </Navigation>
+      </MDXProvider>
     </ThemeProvider>
   )
 }

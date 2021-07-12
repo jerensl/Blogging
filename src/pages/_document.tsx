@@ -6,8 +6,6 @@ import Document, {
   DocumentContext,
 } from 'next/document'
 
-import { Footer } from '../components'
-
 const APP_NAME = 'Jerens App'
 const APP_DESCRIPTION =
   "Hi I'm Jerens Lensun this app will cover topics such as designing good software especially on web development and backend"
@@ -46,9 +44,8 @@ class MyDocument extends Document {
           />
         </Head>
 
-        <body className="container mx-auto md:px-10 text-black bg-white dark:bg-gray-900 dark:text-white">
+        <body className="container mx-auto md:px-10 text-black bg-white dark:dark-theme dark:text-white">
           <Main />
-          <Footer />
           <NextScript />
         </body>
       </Html>

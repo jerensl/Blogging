@@ -1,9 +1,11 @@
 import { MDXProviderProps } from '@mdx-js/react'
 
-export const MarkdownLayout = (props: MDXProviderProps): React.ReactElement => {
+export const MarkdownLayout: React.FC<MDXProviderProps> = (
+  props
+): React.ReactElement => {
   return (
     <div className="prose text-markdown-base max-w-none">
-      <main {...props} />
+      <div {...props} />
     </div>
   )
 }

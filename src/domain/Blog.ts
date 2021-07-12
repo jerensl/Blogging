@@ -35,7 +35,9 @@ export function getListOfArticle(directory: string) {
   return listofArticle.map((file) => file.replace(/\.md/, ''))
 }
 
-export function sortByLatestDate(listOfContent: Array<Metadata>) {
+export function sortByLatestDate(
+  listOfContent: Array<Metadata>
+): Array<Metadata> {
   return listOfContent.sort((a, b) => Date.parse(b.date) - Date.parse(a.date))
 }
 

@@ -13,15 +13,16 @@ export const getStaticProps: GetStaticProps = async () => {
 
 export default function Home({ posts }: { posts: Post[] }): React.ReactElement {
   return (
-    <div>
+    <>
       <Head>
         <title>Jerens Lensun</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <header className="pt-40 min-h-screen px-4">
         <div className="max-w-2xl">
-          <p className="text-2xl">Hi folks, i'm</p>
-          <h1 className="font-bold text-4xl mt-1">Jerens Lensun</h1>
+          <p className="text-2xl">Hi folks,</p>
+          <h1 className="font-bold text-4xl mt-1">I'm Jerens Lensun</h1>
+          <p className="text-2xl mt-1">Fullstack Developer</p>
           <p className="text-lg md:text-xl mt-4">
             As Tech Enthusiast I passionate about a lot of stuff especially
             developing apps so basically, I just share my own thought and
@@ -31,8 +32,10 @@ export default function Home({ posts }: { posts: Post[] }): React.ReactElement {
         </div>
       </header>
       <main className="h-9/10 items-center px-4">
-        <h1 className="font-semibold text-2xl pt-24 py-1">Latest Blog</h1>
-        <div className="grid gap-5 mt-5">
+        <h1 className="font-bold text-2xl pt-24 py-1 text-white">
+          Latest Blog
+        </h1>
+        <div className="grid gap-3 mt-4">
           {posts?.length
             ? posts.map(({ slug, date, title, summary }) => {
                 return (
@@ -41,9 +44,7 @@ export default function Home({ posts }: { posts: Post[] }): React.ReactElement {
                       <Link href={`/blog/${slug}`}>{title}</Link>
                     </h1>
                     <p className="text-gray-500">{date}</p>
-
                     <div className="">{summary}</div>
-
                     <Link href={`/blog/${slug}`}>
                       <span className="text-current opacity-60 cursor-pointer hover:opacity-100">
                         Read More →
@@ -55,6 +56,6 @@ export default function Home({ posts }: { posts: Post[] }): React.ReactElement {
             : 'No posts found.'}
         </div>
       </main>
-    </div>
+    </>
   )
 }
