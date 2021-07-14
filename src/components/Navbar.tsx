@@ -12,6 +12,7 @@ export const Navbar = ({ handleSidebarOpen }: any): React.ReactElement => {
           <button
             className="block p-5 md:hidden md:p-4"
             onClick={handleSidebarOpen}
+            data-testid="open-sidebar"
           >
             <FontAwesomeIcon className="text-xl" icon={['fas', 'bars']} />
           </button>

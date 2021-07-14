@@ -20,6 +20,12 @@ export const Navigation: React.FC<NavigationProps> = ({
     delta: 40,
   })
 
+  const handlersSidebar = useSwipeable({
+    onSwipedLeft: () => setShowSidebar(false),
+    trackMouse: true,
+    delta: 40,
+  })
+
   const handleSidebarOpen = () => setShowSidebar(true)
 
   const handleSidebarClosed = () => setShowSidebar(false)
@@ -30,6 +36,7 @@ export const Navigation: React.FC<NavigationProps> = ({
       <div {...handlers}>
         {children}
         <Sidebar
+          handlersSidebar={handlersSidebar}
           showSidebar={showSidebar}
           handleSidebarClosed={handleSidebarClosed}
         />

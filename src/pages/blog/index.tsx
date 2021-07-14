@@ -31,7 +31,7 @@ export default function Blog({ posts }: { posts: Post[] }): React.ReactElement {
         {posts?.length
           ? posts.map(({ slug, date, cover, title, summary }) => {
               return (
-                <article key={slug} className="flex flex-col fle gap-1">
+                <article key={slug} className="flex flex-col gap-1">
                   <h1 className="text-2xl font-bold leading-8 tracking-tight">
                     <Link href={`/blog/${slug}`}>{title}</Link>
                   </h1>
@@ -41,7 +41,7 @@ export default function Blog({ posts }: { posts: Post[] }): React.ReactElement {
 
                   <p>
                     <Link href={`/blog/${slug}`}>
-                      <span className="text-gray-500 hover:text-gray-300 cursor-pointer">
+                      <span className="text-current cursor-pointer opacity-60 hover:opacity-100">
                         Read More →
                       </span>
                     </Link>

@@ -17,6 +17,8 @@ export default function Home({ posts }: { posts: Post[] }): React.ReactElement {
       <Head>
         <title>Jerens Lensun</title>
         <link rel="icon" href="/favicon.ico" />
+        <meta charSet="utf-8" />
+        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
       <header className="pt-40 min-h-screen px-4">
         <div className="max-w-2xl">
@@ -32,21 +34,24 @@ export default function Home({ posts }: { posts: Post[] }): React.ReactElement {
         </div>
       </header>
       <main className="h-9/10 items-center px-4">
-        <h1 className="font-bold text-2xl pt-24 py-1 text-white">
+        <h1 className="font-bold text-center md:text-left text-2xl pt-24 py-1">
           Latest Blog
         </h1>
-        <div className="grid gap-3 mt-4">
+        <div className="flex flex-col gap-3 mt-4">
           {posts?.length
             ? posts.map(({ slug, date, title, summary }) => {
                 return (
-                  <article className="max-w-2xl flex flex-col gap-1" key={slug}>
+                  <article
+                    className="group max-w-2xl flex p-4 md:px-0 flex-col gap-1"
+                    key={slug}
+                  >
                     <h1 className="text-2xl font-bold leading-8 tracking-tight">
                       <Link href={`/blog/${slug}`}>{title}</Link>
                     </h1>
                     <p className="text-gray-500">{date}</p>
-                    <div className="">{summary}</div>
+                    <p className="">{summary}</p>
                     <Link href={`/blog/${slug}`}>
-                      <span className="text-current opacity-60 cursor-pointer hover:opacity-100">
+                      <span className="text-current cursor-pointer opacity-60 hover:opacity-100">
                         Read More →
                       </span>
                     </Link>

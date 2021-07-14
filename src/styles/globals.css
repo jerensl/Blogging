@@ -3,6 +3,17 @@
 @tailwind utilities;
 
 @layer base {
+  @font-face {
+    font-family: Quicksand;
+    src: url('/static/Quicksand-Medium.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+  }
+
+  body {
+    font-family: 'Quicksand', sans-serif;
+  }
+
   :root {
     --color-text-markdown: #ffffff;
     --text-base: #fff;
