@@ -2,12 +2,19 @@ import Link from 'next/link'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { Dialog, Transition } from '@headlessui/react'
 import { Fragment } from 'react'
+import { SwipeableHandlers } from 'react-swipeable'
+
+interface SidebarSchema {
+  handlersSidebar?: SwipeableHandlers
+  showSidebar: boolean
+  handleSidebarClosed: () => void
+}
 
 export const Sidebar = ({
   handlersSidebar,
   showSidebar,
   handleSidebarClosed,
-}: any) => {
+}: SidebarSchema) => {
   return (
     <Transition.Root show={showSidebar} as={Fragment}>
       <Dialog
@@ -49,28 +56,28 @@ export const Sidebar = ({
                 <FontAwesomeIcon className="text-2xl" icon={['fas', 'times']} />
               </button>
               <Link href="/">
-                <a
+                <span
                   onClick={handleSidebarClosed}
                   className="py-6 font-semibold hover:bg-gray-200 dark:hover:bg-white dark:hover:bg-opacity-5"
                 >
                   Home
-                </a>
+                </span>
               </Link>
               <Link href="/blog">
-                <a
+                <span
                   onClick={handleSidebarClosed}
                   className="py-6 font-semibold hover:bg-gray-200 dark:hover:bg-white dark:hover:bg-opacity-5"
                 >
                   Blog
-                </a>
+                </span>
               </Link>
               <Link href="/about">
-                <a
+                <span
                   onClick={handleSidebarClosed}
                   className="py-6 font-semibold hover:bg-gray-200 dark:hover:bg-white dark:hover:bg-opacity-5"
                 >
                   About
-                </a>
+                </span>
               </Link>
             </div>
           </Transition.Child>

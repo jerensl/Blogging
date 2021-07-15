@@ -26,19 +26,19 @@ export const Navigation: React.FC<NavigationProps> = ({
     delta: 40,
   })
 
-  const handleSidebarOpen = () => setShowSidebar(true)
+  const handleOpenSidebar = () => setShowSidebar(true)
 
-  const handleSidebarClosed = () => setShowSidebar(false)
+  const handleCloseSidebar = () => setShowSidebar(false)
 
   return (
     <>
-      <Navbar handleSidebarOpen={handleSidebarOpen} />
+      <Navbar handleSidebarOpen={handleOpenSidebar} />
       <div {...handlers}>
         {children}
         <Sidebar
           handlersSidebar={handlersSidebar}
           showSidebar={showSidebar}
-          handleSidebarClosed={handleSidebarClosed}
+          handleSidebarClosed={handleCloseSidebar}
         />
         <Footer />
       </div>

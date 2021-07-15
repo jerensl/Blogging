@@ -24,7 +24,7 @@ export default function Home({ posts }: { posts: Post[] }): React.ReactElement {
         <div className="max-w-2xl">
           <p className="text-2xl">Hi folks,</p>
           <h1 className="font-bold text-4xl mt-1">I'm Jerens Lensun</h1>
-          <p className="text-2xl mt-1">Fullstack Developer</p>
+          <p className="text-2xl mt-1">🤡 Developer</p>
           <p className="text-lg md:text-xl mt-4">
             As Tech Enthusiast I passionate about a lot of stuff especially
             developing apps so basically, I just share my own thought and
@@ -50,11 +50,13 @@ export default function Home({ posts }: { posts: Post[] }): React.ReactElement {
                     </h1>
                     <p className="text-gray-500">{date}</p>
                     <p className="">{summary}</p>
-                    <Link href={`/blog/${slug}`}>
-                      <span className="text-current cursor-pointer opacity-60 hover:opacity-100">
-                        Read More →
-                      </span>
-                    </Link>
+                    <p>
+                      <Link href={`/blog/${slug}`}>
+                        <span className="text-current cursor-pointer opacity-60 hover:opacity-100">
+                          Read More →
+                        </span>
+                      </Link>
+                    </p>
                   </article>
                 )
               })
