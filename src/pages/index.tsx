@@ -27,7 +27,7 @@ export default function Home({ posts }: { posts: Post[] }): React.ReactElement {
           <p className="text-2xl mt-1">🤡 Developer</p>
           <p className="text-lg md:text-xl mt-4">
             As Tech Enthusiast I passionate about a lot of stuff especially
-            developing apps so basically, I just share my own thought and
+            developing apps so basically, I just share my clown thought and
             learning experience, not expertise. Don't take my word directly do
             your own research.
           </p>
