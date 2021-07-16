@@ -33,7 +33,7 @@ export default function Home({ posts }: { posts: Post[] }): React.ReactElement {
           </p>
         </div>
       </header>
-      <main className="h-9/10 items-center px-4">
+      <main className="min-h-full-screen items-center px-4">
         <h1 className="font-bold text-center md:text-left text-2xl pt-24 py-1">
           Latest Blog
         </h1>
@@ -49,7 +49,7 @@ export default function Home({ posts }: { posts: Post[] }): React.ReactElement {
                       <Link href={`/blog/${slug}`}>{title}</Link>
                     </h1>
                     <p className="text-gray-500">{date}</p>
-                    <p className="">{summary}</p>
+                    <p className="line-clamp-4">{summary}</p>
                     <p>
                       <Link href={`/blog/${slug}`}>
                         <span className="text-current cursor-pointer opacity-60 hover:opacity-100">

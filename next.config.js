@@ -2,6 +2,7 @@ const rehypePrism = require('@mapbox/rehype-prism')
 const withPWA = require('next-pwa')
 const runtimeCaching = require('next-pwa/cache')
 const withPlugins = require('next-compose-plugins')
+// const { InjectManifest } = require('workbox-webpack-plugin')
 
 const visit = 'unist-util-visit'
 
@@ -62,11 +63,18 @@ module.exports = withPlugins(
         pwa: {
           dest: 'public',
           runtimeCaching,
+          cacheOnFrontEndNav: true,
         },
       },
     ],
   ],
   {
     /* global config here ... */
+    // plugins: [
+    //   // Other plugins...
+    //   new InjectManifest({
+    //     swSrc: './public/sw.js',
+    //   }),
+    // ],
   }
 )

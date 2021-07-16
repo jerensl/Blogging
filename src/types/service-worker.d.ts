@@ -117,6 +117,7 @@ interface ServiceWorkerGlobalScope {
   caches: CacheStorage
   clients: Clients
   registration: ServiceWorkerRegistration
+  __WB_DISABLE_DEV_LOGS: boolean
 
   addEventListener(
     event: 'activate',

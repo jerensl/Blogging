@@ -27,7 +27,7 @@ export default function Blog({ posts }: { posts: Post[] }): React.ReactElement {
         <title>Jerens Lensun</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <section className="min-h-full-screen max-w-2xl items-center pt-32 px-4">
+      <section className="min-h-full-screen max-w-2xl items-center pt-32 px-4 flex flex-col gap-6">
         {posts?.length
           ? posts.map(({ slug, date, cover, title, summary }) => {
               return (

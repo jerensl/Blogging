@@ -43,7 +43,6 @@ class MyDocument extends Document {
             content="IcqLpRy2zwKkTN1TlYABjrsUKoOOUp5sE5EQoMhrg_U"
           />
         </Head>
-
         <body className="container mx-auto md:px-10 text-black bg-white dark:dark-theme dark:text-white">
           <Main />
           <NextScript />
