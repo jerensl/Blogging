@@ -13,7 +13,7 @@ export interface Metadata {
   slug: string
 }
 
-export interface Post {
+export interface Article {
   title: string
   fileName: string
   slug: string
@@ -66,6 +66,8 @@ export async function getAllPublishArticle(
       allMetadata.push({ ...data, slug: fileName })
     }
   })
+
+  sort(allMetadata)
 
   return allMetadata
 }
