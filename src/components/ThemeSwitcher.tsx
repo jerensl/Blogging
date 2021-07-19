@@ -10,16 +10,23 @@ export const ThemeSwitcher = (): React.ReactElement => {
 
   const handleClick = () => setTheme(theme === 'dark' ? 'light' : 'dark')
 
+  if (theme === 'light') {
+    return (
+      <button
+        className="h-10 w-10 rounded-full mr-5 hover:bg-gray-200"
+        onClick={handleClick}
+      >
+        <FontAwesomeIcon className="text-2xl" icon={['fas', 'sun']} />
+      </button>
+    )
+  }
+
   return (
     <button
-      className="h-10 w-10 rounded-full mr-5 hover:bg-gray-200 dark:hover:bg-gray-700"
+      className="h-10 w-10 rounded-full mr-5 hover:bg-gray-700"
       onClick={handleClick}
     >
-      {theme === 'light' ? (
-        <FontAwesomeIcon className="text-2xl" icon={['fas', 'sun']} />
-      ) : (
-        <FontAwesomeIcon className="text-xl" icon={['fas', 'moon']} />
-      )}
+      <FontAwesomeIcon className="text-xl" icon={['fas', 'moon']} />
     </button>
   )
 }

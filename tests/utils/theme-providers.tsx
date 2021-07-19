@@ -9,7 +9,7 @@ interface TestProviderOptions {
 interface CustomOptions extends RenderOptions, TestProviderOptions {}
 
 const createTestProviders =
-  ({ theme = 'light' }: TestProviderOptions): React.FC =>
+  ({ theme = 'dark' }: TestProviderOptions): React.FC =>
   ({ children }) =>
     (
       <ThemeProvider

@@ -14,7 +14,7 @@ const DEFAULT_PROPS: Posts = {
   posts: [
     {
       title: 'Test First Article',
-      date: '22-01-1999',
+      date: '22-01-2021',
       fileName: 'test-first-article',
       draft: true,
       summary: 'This is a summary',
@@ -23,7 +23,7 @@ const DEFAULT_PROPS: Posts = {
     {
       title: 'Test Second Article',
       fileName: 'test-second-article',
-      date: '22-01-1999',
+      date: '22-02-2021',
       draft: true,
       summary: 'this is a summary',
       slug: 'test-second-title',

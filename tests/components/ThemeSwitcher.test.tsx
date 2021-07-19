@@ -40,7 +40,7 @@ function renderThemeSwitch() {
       <ThemeSwitcher />
       <ThemeSpy />
     </>,
-    { theme: 'light' }
+    { theme: 'dark' }
   )
 
   const button = utils.getByRole('button')
@@ -48,24 +48,24 @@ function renderThemeSwitch() {
   return { utils, button }
 }
 
-test('Theme switcher default dark theme', async () => {
+test('Theme switcher should render default dark theme', async () => {
   const { utils } = renderThemeSwitch()
+
+  expect(utils.getByTestId('theme-spy')).toHaveTextContent('dark')
+})
+
+test('Theme switcher should switch to light theme', async () => {
+  const { utils, button } = renderThemeSwitch()
+
+  userEvent.click(button)
 
   expect(utils.getByTestId('theme-spy')).toHaveTextContent('light')
 })
 
-test('Theme switcher to light theme', async () => {
+test('Theme switcher should back to dark theme', async () => {
   const { utils, button } = renderThemeSwitch()
 
   userEvent.click(button)
 
   expect(utils.getByTestId('theme-spy')).toHaveTextContent('dark')
-})
-
-test('Theme switcher back to dark theme', async () => {
-  const { utils, button } = renderThemeSwitch()
-
-  userEvent.click(button)
-
-  expect(utils.getByTestId('theme-spy')).toHaveTextContent('light')
 })

@@ -4,6 +4,7 @@ import { Navbar } from './Navbar'
 import { useState } from 'react'
 import { useSwipeable } from 'react-swipeable'
 import { Footer } from '../components/Footer'
+import { ThemeSwitcher } from './ThemeSwitcher'
 
 interface NavigationProps {
   children: React.ReactElement
@@ -32,7 +33,10 @@ export const Navigation: React.FC<NavigationProps> = ({
 
   return (
     <>
-      <Navbar handleSidebarOpen={handleOpenSidebar} />
+      <Navbar
+        handleSidebarOpen={handleOpenSidebar}
+        themeSwitch={<ThemeSwitcher />}
+      />
       <div {...handlers}>
         {children}
         <Sidebar

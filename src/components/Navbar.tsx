@@ -1,9 +1,16 @@
 import Link from 'next/link'
-import { ThemeSwitcher } from './ThemeSwitcher'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
-export const Navbar = ({ handleSidebarOpen }: any): React.ReactElement => {
+interface NavbarProps {
+  handleSidebarOpen: () => void
+  themeSwitch: React.ReactElement
+}
+
+export const Navbar = ({
+  handleSidebarOpen,
+  themeSwitch,
+}: NavbarProps): React.ReactElement => {
   return (
     <>
       <nav className="fixed z-10 dark:dark-theme bg-gray-100 left-0 right-0 md:px-10 shadow">
@@ -12,7 +19,6 @@ export const Navbar = ({ handleSidebarOpen }: any): React.ReactElement => {
           <button
             className="block p-5 md:hidden md:p-4"
             onClick={handleSidebarOpen}
-            data-testid="open-sidebar"
           >
             <FontAwesomeIcon className="text-xl" icon={['fas', 'bars']} />
           </button>
@@ -41,7 +47,7 @@ export const Navbar = ({ handleSidebarOpen }: any): React.ReactElement => {
             </Link>
           </div>
           {/* Secondary Nav */}
-          <ThemeSwitcher />
+          {themeSwitch}
         </div>
       </nav>
     </>

@@ -17,7 +17,6 @@ import {
   faSun,
   faTimes,
 } from '@fortawesome/free-solid-svg-icons'
-import { useEffect } from 'react'
 
 library.add(
   faGithubSquare,
@@ -34,12 +33,6 @@ library.add(
 const components = {
   code: CodeBlock,
   wrapper: MarkdownLayout,
-}
-
-declare global {
-  interface Window {
-    workbox: any
-  }
 }
 
 function MyApp({ Component, pageProps }: AppProps): React.ReactElement {
