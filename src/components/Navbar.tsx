@@ -1,27 +1,20 @@
 import Link from 'next/link'
 
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-
 interface NavbarProps {
-  handleSidebarOpen: () => void
-  themeSwitch: React.ReactElement
+  leftSide: React.ReactElement
+  rightSide: React.ReactElement
 }
 
 export const Navbar = ({
-  handleSidebarOpen,
-  themeSwitch,
+  leftSide,
+  rightSide,
 }: NavbarProps): React.ReactElement => {
   return (
     <>
       <nav className="fixed z-10 dark:dark-theme bg-gray-100 left-0 right-0 md:px-10 shadow">
         <div className="flex justify-between place-items-center min-w-max">
           {/* Mobile Nav */}
-          <button
-            className="block p-5 md:hidden md:p-4"
-            onClick={handleSidebarOpen}
-          >
-            <FontAwesomeIcon className="text-xl" icon={['fas', 'bars']} />
-          </button>
+          {leftSide}
 
           {/* Logo */}
           <Link href="/">
@@ -47,7 +40,7 @@ export const Navbar = ({
             </Link>
           </div>
           {/* Secondary Nav */}
-          {themeSwitch}
+          {rightSide}
         </div>
       </nav>
     </>

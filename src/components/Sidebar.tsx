@@ -19,6 +19,7 @@ export const Sidebar = ({
     <Transition.Root show={showSidebar} as={Fragment}>
       <Dialog
         as="aside"
+        role="dialog"
         static
         className="fixed inset-0 z-10 overflow-hidden"
         onClose={handleSidebarClosed}
@@ -33,7 +34,10 @@ export const Sidebar = ({
             leaveFrom="opacity-100"
             leaveTo="opacity-0"
           >
-            <Dialog.Overlay className="absolute inset-0 bg-black bg-opacity-40 transition-opacity" />
+            <Dialog.Overlay
+              aria-label="Overlay"
+              className="absolute inset-0 bg-black bg-opacity-40 transition-opacity"
+            />
           </Transition.Child>
           <Transition.Child
             as={Fragment}
@@ -44,14 +48,11 @@ export const Sidebar = ({
             leaveFrom="-translate-x-0"
             leaveTo="-translate-x-full"
           >
-            <div
-              data-testid="sidebar"
-              className="fixed inset-y-0 left-0 max-w-full w-56 flex flex-col bg-gray-100 dark:dark-theme text-center"
-            >
+            <div className="fixed inset-y-0 left-0 max-w-full w-56 flex flex-col bg-gray-100 dark:dark-theme text-center">
               <button
                 className="py-5"
                 onClick={handleSidebarClosed}
-                data-testid="closed-sidebar"
+                aria-label="Closed Sidebar"
               >
                 <FontAwesomeIcon className="text-2xl" icon={['fas', 'times']} />
               </button>

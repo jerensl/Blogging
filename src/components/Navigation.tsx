@@ -5,6 +5,7 @@ import { useState } from 'react'
 import { useSwipeable } from 'react-swipeable'
 import { Footer } from '../components/Footer'
 import { ThemeSwitcher } from './ThemeSwitcher'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 interface NavigationProps {
   children: React.ReactElement
@@ -34,8 +35,16 @@ export const Navigation: React.FC<NavigationProps> = ({
   return (
     <>
       <Navbar
-        handleSidebarOpen={handleOpenSidebar}
-        themeSwitch={<ThemeSwitcher />}
+        leftSide={
+          <button
+            className="block p-5 md:hidden md:p-4"
+            onClick={handleOpenSidebar}
+            aria-label="Open Sidebar"
+          >
+            <FontAwesomeIcon className="text-xl" icon={['fas', 'bars']} />
+          </button>
+        }
+        rightSide={<ThemeSwitcher />}
       />
       <div {...handlers}>
         {children}
