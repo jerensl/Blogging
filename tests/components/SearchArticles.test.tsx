@@ -29,7 +29,6 @@ const renderSearchArticlesComponent = () => {
   const util = render(<SearchArticles posts={posts} />)
   const input = util.getByPlaceholderText('Search Articles...')
 
-  console.log(input)
   return {
     input,
     ...util,
