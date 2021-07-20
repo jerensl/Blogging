@@ -1,7 +1,18 @@
 {
-  "name": "personal-web-typescript",
-  "version": "0.1.0",
-  "private": true,
+  "name": "blogging-typescript",
+  "version": "1.0.0",
+  "private": false,
+  "author": {
+    "name": "Jerens S. Lensun",
+    "email": "jerensslensun@gmail.com",
+    "url": "https://www.jerenslensun.com/"
+  },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "https://www.opensource.org/licenses/mit-license.php"
+    }
+  ],
   "scripts": {
     "dev": "next dev",
     "build": "next build && next export",

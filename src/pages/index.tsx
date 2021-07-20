@@ -24,7 +24,7 @@ export default function Home({
   return (
     <>
       <Head>
-        <title>Jerens Lensun</title>
+        <title>Your Name</title>
         <link rel="icon" href="/favicon.ico" />
         <meta charSet="utf-8" />
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
@@ -32,13 +32,12 @@ export default function Home({
       <header className="pt-40 min-h-screen px-4">
         <div className="max-w-2xl">
           <p className="text-2xl">Hi folks,</p>
-          <h1 className="font-bold text-4xl mt-1">I'm Jerens Lensun</h1>
-          <p className="text-2xl mt-1">Fullstack Developer</p>
+          <h1 className="font-bold text-4xl mt-1">I'm Your Name</h1>
+          <p className="text-2xl mt-1">Your Role</p>
           <p className="text-lg md:text-xl mt-4">
-            As Tech Enthusiast I passionate about a lot of stuff especially
-            developing apps so basically, I just share my own thought and
-            learning experience, not expertise. Don't take my word directly do
-            your own research.
+            Quisque eget erat sed ante porttitor semper. Fusce facilisis ante
+            rutrum mi semper, eu blandit lacus pellentesque. Ut at elit non mi
+            ultrices tempus et quis urna.
           </p>
         </div>
       </header>

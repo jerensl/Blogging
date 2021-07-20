@@ -6,9 +6,8 @@ import Document, {
   DocumentContext,
 } from 'next/document'
 
-const APP_NAME = 'Jerens App'
-const APP_DESCRIPTION =
-  "Hi I'm Jerens Lensun this app will cover topics such as designing good software especially on web development and backend"
+const APP_NAME = 'App Name'
+const APP_DESCRIPTION = 'app desription'
 
 class MyDocument extends Document {
   static async getInitialProps(ctx: DocumentContext) {

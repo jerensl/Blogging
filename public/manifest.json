@@ -1,8 +1,8 @@
 {
-  "name": "Jerens App",
-  "short_name": "Jerens App",
+  "name": "Your App",
+  "short_name": "Your App",
   "start_url": "/",
-  "description": "Jerens Lensun personal app for portofolio.",
+  "description": "Your Name personal app for portofolio.",
   "display": "standalone",
   "theme_color": "#ffffff",
   "background_color": "#ffffff",
