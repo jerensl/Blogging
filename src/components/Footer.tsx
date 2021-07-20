@@ -23,7 +23,7 @@ export const Footer = (): React.ReactElement => {
           />
         </a>
       </div>
-      <p>© 2021 Jerens Lensun. All Rights Reserved.</p>
+      <p>© 2021 Your Name. All Rights Reserved.</p>
     </footer>
   )
 }
