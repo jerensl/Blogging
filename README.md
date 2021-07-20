@@ -1,6 +1,6 @@
 # Blogging
 
-Blogging is an open source blogging system that is easy to use.
+Blogging is a personal web app for portfolios & blogs.
 
 ## Features
 
