@@ -1,10 +1,17 @@
 import Head from 'next/head'
-import { GetStaticProps } from 'next'
-import { getAllPublishArticle, sortByLatestDate, Article } from '../domain/Blog'
+import { GetStaticProps, InferGetStaticPropsType } from 'next'
+import {
+  getAllPublishArticle,
+  sortByLatestDate,
+  Metadata,
+} from '../domain/Blog'
 import Link from 'next/link'
 
 export const getStaticProps: GetStaticProps = async () => {
-  const posts = await getAllPublishArticle('contents', sortByLatestDate)
+  const posts: Array<Metadata> = await getAllPublishArticle(
+    'contents',
+    sortByLatestDate
+  )
 
   return {
     props: { posts },
@@ -13,9 +20,7 @@ export const getStaticProps: GetStaticProps = async () => {
 
 export default function Home({
   posts,
-}: {
-  posts: Article[]
-}): React.ReactElement {
+}: InferGetStaticPropsType<typeof getStaticProps>): React.ReactElement {
   return (
     <>
       <Head>
@@ -43,7 +48,7 @@ export default function Home({
         </h1>
         <div className="flex flex-col gap-3 mt-4">
           {posts?.length
-            ? posts.map(({ slug, date, title, summary }) => {
+            ? posts.map(({ slug, date, title, summary }: Metadata) => {
                 return (
                   <article
                     className="group max-w-2xl flex p-4 md:px-0 flex-col gap-1"

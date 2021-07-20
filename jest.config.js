@@ -4,4 +4,9 @@ module.exports = {
   reporters: ['default', 'jest-junit'],
   testResultsProcessor: 'jest-junit',
   coverageReporters: ['json', 'lcov', 'text', 'clover', 'cobertura'],
+  coveragePathIgnorePatterns: [
+    '<rootDir>/node_modules/',
+    '<rootDir>/jest.setup.ts',
+    '<rootDir>/tests/',
+  ],
 }

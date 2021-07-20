@@ -6,3 +6,7 @@ summary: Testing code
 ---
 
 Example code for testing
+
+```js
+console.log('Hello World')
+```

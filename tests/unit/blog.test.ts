@@ -1,7 +1,6 @@
 import {
   getListOfArticle,
   getAllPublishArticle,
-  getArticleWithMetadata,
   sortByLatestDate,
 } from '../../src/domain/Blog'
 
@@ -15,24 +14,10 @@ const metadata = [
   },
 ]
 
-const exampleArticle = {
-  article: {
-    renderedOutput: '<p>Example code for testing</p>',
-  },
-  metadata: {
-    title: 'Testing 101',
-    fileName: 'test-markdown.md',
-    slug: 'test-markdown',
-    date: '2020-04-24',
-    draft: false,
-    summary: 'Testing code',
-  },
-}
-
 describe('check blog working correctly', () => {
   test('should parse one post from content directory', () => {
     const post = getListOfArticle('tests/contents')
-    expect(post).toEqual(['test-markdown'])
+    expect(post).toEqual(['test-draft', 'test-markdown'])
   })
 
   test('should fail when pass wrong directory', () => {

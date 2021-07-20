@@ -2,38 +2,28 @@
  * @jest-environment jsdom
  */
 
-import { render } from '@testing-library/react'
+import { render, within } from '../utils/markdown-provider'
 import Blog from '../../src/pages/blog/index'
-import { Article } from '../../src/domain/Blog'
+import { getAllPublishArticle, sortByLatestDate } from '../../src/domain/Blog'
 
-interface Posts {
-  posts: Article[]
-}
+const renderBlogSlug = async () => {
+  const posts = await getAllPublishArticle('tests/contents', sortByLatestDate)
 
-const DEFAULT_PROPS: Posts = {
-  posts: [
-    {
-      title: 'Test First Article',
-      date: '22-01-2021',
-      fileName: 'test-first-article',
-      draft: true,
-      summary: 'This is a summary',
-      slug: 'test-first-title',
-    },
-    {
-      title: 'Test Second Article',
-      fileName: 'test-second-article',
-      date: '22-02-2021',
-      draft: true,
-      summary: 'this is a summary',
-      slug: 'test-second-title',
-    },
-  ],
+  const utils = render(<Blog posts={posts} />)
+
+  return { utils }
 }
 
 test('This blog pages will show the list of article', async () => {
-  const { getAllByRole } = render(<Blog {...DEFAULT_PROPS} />)
+  const { utils } = await renderBlogSlug()
 
-  expect(getAllByRole('heading')[0]).toHaveTextContent('Test First Article')
-  expect(getAllByRole('heading')[1]).toHaveTextContent('Test Second Article')
+  const result = utils.getAllByRole('article').map((article) => {
+    return within(article).getByRole('heading').textContent
+  })
+
+  expect(result).toMatchInlineSnapshot(`
+Array [
+  "Testing 101",
+]
+`)
 })

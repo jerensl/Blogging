@@ -1,11 +1,14 @@
 import Head from 'next/head'
-import { GetStaticProps } from 'next'
+import { GetStaticProps, InferGetStaticPropsType } from 'next'
 import { getAllPublishArticle, sortByLatestDate } from '../../domain/Blog'
 import { SearchArticles } from '../../components/SearchArticles'
-import { Article } from '../../domain/Blog'
+import { Metadata } from '../../domain/Blog'
 
 export const getStaticProps: GetStaticProps = async () => {
-  const posts = await getAllPublishArticle('contents', sortByLatestDate)
+  const posts: Array<Metadata> = await getAllPublishArticle(
+    'contents',
+    sortByLatestDate
+  )
 
   return {
     props: { posts },
@@ -14,9 +17,7 @@ export const getStaticProps: GetStaticProps = async () => {
 
 export default function Blog({
   posts,
-}: {
-  posts: Article[]
-}): React.ReactElement {
+}: InferGetStaticPropsType<typeof getStaticProps>): React.ReactElement {
   return (
     <div>
       <Head>

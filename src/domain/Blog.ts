@@ -11,15 +11,7 @@ export interface Metadata {
   draft: boolean
   summary: string
   slug: string
-}
-
-export interface Article {
-  title: string
-  fileName: string
-  slug: string
-  date: string
-  draft: boolean
-  summary: string
+  fileName?: string
 }
 
 type Sort = (listOfContent: Array<Metadata>) => Array<Metadata>
@@ -74,7 +66,7 @@ export async function getAllPublishArticle(
 
 export const getArticleWithMetadata = async (
   directory: string,
-  fileName: string
+  fileName: string | string[] | undefined
 ) => {
   const file = `${fileName}.md`
 

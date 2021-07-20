@@ -4,9 +4,9 @@
 import { render, within } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import { SearchArticles } from '../../src/components/SearchArticles'
-import { Article } from '../../src/domain/Blog'
+import { Metadata } from '../../src/domain/Blog'
 
-const posts: Article[] = [
+const posts: Metadata[] = [
   {
     title: 'Test First Article',
     date: '01-02-2021',

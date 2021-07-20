@@ -1,5 +1,10 @@
 import Head from 'next/head'
-import { GetStaticProps, GetStaticPaths } from 'next'
+import {
+  GetStaticProps,
+  GetStaticPropsContext,
+  GetStaticPaths,
+  InferGetStaticPropsType,
+} from 'next'
 import { getArticleWithMetadata, getListOfArticle } from '../../domain/Blog'
 import { MDXRemote } from 'next-mdx-remote'
 
@@ -16,15 +21,19 @@ export const getStaticPaths: GetStaticPaths = async () => {
   }
 }
 
-export const getStaticProps: GetStaticProps = async ({ params }: any) => {
-  const posts = await getArticleWithMetadata('contents', params.slug)
+export const getStaticProps: GetStaticProps = async (
+  context: GetStaticPropsContext
+) => {
+  const posts = await getArticleWithMetadata('contents', context.params?.slug)
 
   return {
     props: { posts },
   }
 }
 
-export default function Blog({ posts }: any): React.ReactElement {
+export default function Blog({
+  posts,
+}: InferGetStaticPropsType<typeof getStaticProps>): React.ReactElement {
   const { article, metadata } = posts
   const { date, title, summary } = metadata
 

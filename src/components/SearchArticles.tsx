@@ -1,11 +1,11 @@
 import { useState } from 'react'
-import { Article } from '../domain/Blog'
+import { Metadata } from '../domain/Blog'
 import Link from 'next/link'
 
 export const SearchArticles = ({
   posts,
 }: {
-  posts: Article[]
+  posts: Metadata[]
 }): React.ReactElement => {
   const [searchArticles, setSearchArticles] = useState<string>('')
 
